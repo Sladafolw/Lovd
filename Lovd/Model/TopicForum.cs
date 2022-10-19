@@ -10,11 +10,10 @@ namespace Lovd.Models
             Messages = new HashSet<Message>();
         }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; } = null!;
         public int TopicId { get; set; }
         public string TopicName { get; set; } = null!;
 
-        public virtual User User { get; set; } = null!;
         public virtual ICollection<Message> Messages { get; set; }
     }
 }
