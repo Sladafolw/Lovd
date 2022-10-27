@@ -185,6 +185,12 @@ namespace Lovd.Models
                 entity.Property(e => e.DateNews).HasColumnType("datetime");
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.News)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_News_AspNetUsers");
             });
 
             modelBuilder.Entity<TopicForum>(entity =>
@@ -197,18 +203,30 @@ namespace Lovd.Models
                 entity.Property(e => e.TopicName).HasMaxLength(200);
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.TopicForums)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_TopicForum_AspNetUsers");
             });
 
             modelBuilder.Entity<UsersInfo>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__Users__1788CC4C8BC4D231");
+                    .HasName("PK__UsersInf__1788CC4CBFC09311");
 
                 entity.ToTable("UsersInfo");
 
                 entity.Property(e => e.LastOnline).HasColumnType("datetime");
 
                 entity.Property(e => e.RegistrationDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.User)
+                    .WithOne(p => p.UsersInfo)
+                    .HasForeignKey<UsersInfo>(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UsersInfo_UsersInfo");
             });
 
             OnModelCreatingPartial(modelBuilder);

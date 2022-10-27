@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Lovd.Controllers
 {
@@ -8,5 +9,6 @@ namespace Lovd.Controllers
         {
             return View();
         }
+        
     }
 }

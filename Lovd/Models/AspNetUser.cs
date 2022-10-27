@@ -10,6 +10,8 @@ namespace Lovd.Models
             AspNetUserClaims = new HashSet<AspNetUserClaim>();
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
             AspNetUserTokens = new HashSet<AspNetUserToken>();
+            News = new HashSet<News>();
+            TopicForums = new HashSet<TopicForum>();
             Roles = new HashSet<AspNetRole>();
         }
 
@@ -29,9 +31,12 @@ namespace Lovd.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
 
+        public virtual UsersInfo? UsersInfo { get; set; }
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; }
+        public virtual ICollection<News> News { get; set; }
+        public virtual ICollection<TopicForum> TopicForums { get; set; }
 
         public virtual ICollection<AspNetRole> Roles { get; set; }
     }

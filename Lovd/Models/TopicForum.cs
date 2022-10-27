@@ -14,6 +14,7 @@ namespace Lovd.Models
         public int TopicId { get; set; }
         public string TopicName { get; set; } = null!;
 
+        public virtual AspNetUser User { get; set; } = null!;
         public virtual ICollection<Message> Messages { get; set; }
     }
 }

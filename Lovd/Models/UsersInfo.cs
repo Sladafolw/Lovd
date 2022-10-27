@@ -7,7 +7,9 @@ namespace Lovd.Models
     {
         public string UserId { get; set; } = null!;
         public DateTime RegistrationDate { get; set; }
-        public bool? Online { get; set; }
-        public DateTime LastOnline { get; set; }
+        public DateTime? LastOnline { get; set; }
+        public bool Online { get; set; }
+
+        public virtual AspNetUser User { get; set; } = null!;
     }
 }
