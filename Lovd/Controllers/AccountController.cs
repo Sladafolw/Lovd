@@ -3,7 +3,7 @@ using System.Security.Claims;
 
 namespace Lovd.Controllers
 {
-    public class Account : Controller
+    public class AccountController : Controller
     {
         public IActionResult Index()
         {

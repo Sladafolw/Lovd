@@ -275,3 +275,4 @@ C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\Lovd.dll
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\ref\Lovd.dll
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\Lovd.pdb
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\Lovd.genruntimeconfig.cache
+C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\Lovd.csproj.AssemblyReference.cache
