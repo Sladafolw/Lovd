@@ -17,7 +17,8 @@ namespace Lovd.Models
         public int? DisLikes { get; set; }
         public string UserId { get; set; } = null!;
         public DateTime DateNews { get; set; }
-
+        public string Title { get; set; }
+        public string Announce { get; set; }
         public virtual AspNetUser User { get; set; } = null!;
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<LikesWithDislike> LikesWithDislikes { get; set; }

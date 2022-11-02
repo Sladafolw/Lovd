@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <title>Bootstrap 4 Card (с шапкой)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="/examples/vendors/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    @*@if (User.IsInRole("admin"))
+        {*@
+    <a class="link-dark" onclick="a()" id="partialView">Add</a>@*}*@
+    <div class="Text"></div>
+    <div id="lext"></div>
+
+    <div class="container">
+
+        <h1 class="h4 text-center my-5"> Новости</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Карточка, в которой в качестве элемента шапки используется div -->
+                <div class="card mx-auto mb-4" style="max-width: 300px;">
+                    <!-- Шапка -->
+                    <div class="card-header">
+                        Ремонт
+                    </div>
+                    <!-- Текстовый контент -->
+                    <div class="card-body">
+                        <h4 class="card-title">   Произвели ремонт  стоматологического кабинета</h4>
+                        <p class="card-text">Ведь в каждой больнице должен быть хорошый ремонт</p>
+                        <a href="#" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div><!-- Конец карточки -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="/examples/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <!-- Popper -->
+    <script src="/examples/vendors/popper.js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="/examples/vendors/bootstrap-4/js/bootstrap.min.js"></script>
+</body>
+</html>
+<script>
+    function a()
+    { var form = document.createElement("form");
+     form.method='post'; 
+     form.action='<%: Url.Action("AddNews", "News") %>';
+     form.className='form';   
+     let lext=document.getElementById('lext');
+    lext.append(form);
+         let forms=document.getElementsByClassName(form);
+        $(".form").load('@Url.Action("AddNews","News")');
+    let as=document.getElementById('partialView');
+    as.hidden=true;
+     var btn = document.createElement("button");
+     btn.attributes= 'asp-controller="Forum" asp-action="MainPage"';
+    btn.type = "submit";
+    btn.h
+    btn.innerHTML = "Click Me";
+      form.appendChild(btn);
+ //let lext=document.getElementById('lext');
+ //   lext.append(form);
+
+ //       var html2Add= "<form method="post" class="form" asp-controller="News" asp-action="MainPage">" +" <button type="submit"> xer</button>" + "</form>"";
+ //             $(".form").load('@Url.Action("AddNews","News")');
+ //              lext.append(html2Add);
+
+    }
+</script>
