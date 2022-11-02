@@ -21,8 +21,9 @@ namespace Lovd.Controllers
 
         // GET: News
         public async Task<IActionResult> MainPage()
-        {
-          return View();
+        { var News= (from news in _context.News
+                     select new{ DateNews=news.DateNews,Title=news.Title,Announce= news.Announce,DisLikes=news.DisLikes??0,Likes=news.Likes}).AsEnumerable().ToList();
+            return View(News);
         }
 
       

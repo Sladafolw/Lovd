@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
-
+@model IEnumerable<dynamic>
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -15,34 +15,32 @@
 <body>
     @*@if (User.IsInRole("admin"))
         {*@
-    <a class="link-dark" onclick="a()" id="partialView">Add</a>@*}*@
-    <div class="Text"></div>
-    <div id="lext"></div>
-
+  
+  
     <div class="container">
 
         <h1 class="h4 text-center my-5"> Новости</h1>
-
+         @foreach(var a in Model){
         <div class="row">
             <div class="col-md-6">
                 <!-- Карточка, в которой в качестве элемента шапки используется div -->
                 <div class="card mx-auto mb-4" style="max-width: 300px;">
                     <!-- Шапка -->
                     <div class="card-header">
-                        Ремонт
+                       @a.Title
                     </div>
                     <!-- Текстовый контент -->
                     <div class="card-body">
-                        <h4 class="card-title">   Произвели ремонт  стоматологического кабинета</h4>
-                        <p class="card-text">Ведь в каждой больнице должен быть хорошый ремонт</p>
+                        <h4 class="card-title">@a.DateNews </h4>
+                        <p class="card-text">@a.Announce</p>
                         <a href="#" class="btn btn-primary">Перейти</a>
                     </div>
                 </div><!-- Конец карточки -->
             </div>
 
-        </div>
+        </div>}
     </div>
-
+    
     <!-- jQuery -->
     <script src="/examples/vendors/jquery/jquery-3.2.1.min.js"></script>
     <!-- Popper -->
