@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WtvqaOB85RKqXEF8WJk4/bx+X+yPeyJD2KaFYcvroiI=",
+  "Hash": "blk3HAYSvkM/LPBIwFcVejL+3XV4Ok1pN7dUidrhrac=",
   "Source": "Lovd",
   "BasePath": "_content/Lovd",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\Golavl.jpg",
+      "SourceId": "Lovd",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\",
+      "BasePath": "_content/Lovd",
+      "RelativePath": "Golavl.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Golavl.jpg"
     },
     {
       "Identity": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\js\\site.js",

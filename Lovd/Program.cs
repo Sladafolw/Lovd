@@ -5,6 +5,7 @@ using Lovd.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Lovd.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("LovdContextConnection") ?? throw new InvalidOperationException("Connection string 'LovdContextConnection' not found.");
 

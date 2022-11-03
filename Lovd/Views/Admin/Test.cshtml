@@ -1,0 +1,8 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="text-center">
+
+<form   asp-controller="Admin" asp-action="Test"> 
+    <input type="file" name="Test">
+    <button type="submit">Post</button>
+</form></div>
+ @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -47,7 +47,14 @@ namespace Lovd.Controllers
         [HttpGet]
         public async Task<ActionResult> Acces()
         { return View(); }
-
+        [HttpGet]
+        public async Task<ActionResult> Test()
+        { return View(); }
+        [HttpPost]
+        public async Task<ActionResult> Test(IFormFileCollection Test)
+        {
+            return View();
+        }
         public async Task<IActionResult> IndexNews()
         {
             var loveContext = _context.News.Include(n => n.User);
@@ -86,16 +93,17 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateNews([Bind("IdNews,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] News news)
+        public async Task<IActionResult> CreateNews([Bind("IdNews,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] News news,IFormFile PhotoPreview)
         {
             if (ModelState.IsValid)
             {
+             
                 _context.Add(news);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", news.UserId);
-            return View(news);
+           return RedirectToAction("IndexNews");
         }
 
         // GET: News/Edit/5
