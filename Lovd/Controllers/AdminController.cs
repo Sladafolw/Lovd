@@ -95,7 +95,7 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateArticles([Bind("IdArticle,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article article, IFormFile PhotoPreview)
+        public async Task<IActionResult> CreateArticles([Bind("IdArticle,ArticleHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article article, IFormFile PhotoPreview)
         {
             if (ModelState.IsValid)
             {
@@ -142,7 +142,7 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditArticles(int id, [Bind("IdArticle,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article articles)
+        public async Task<IActionResult> EditArticles(int id, [Bind("IdArticle,ArticleHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article articles)
         {
             if (id != articles.IdArticle)
             {

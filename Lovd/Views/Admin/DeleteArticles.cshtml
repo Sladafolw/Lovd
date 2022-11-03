@@ -12,10 +12,10 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NewsHtml)
+            @Html.DisplayNameFor(model => model.ArticleHtml)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NewsHtml)
+            @Html.DisplayFor(model => model.ArticleHtml)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Likes)
@@ -55,7 +55,7 @@
         </dd>
     </dl>
     
-    <form asp-action="DeleteArticles">
+    <form asp-action="Delete">
         <input type="hidden" asp-for="IdArticle" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="IndexArticles">Back to List</a>

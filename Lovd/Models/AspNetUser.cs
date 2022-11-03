@@ -13,6 +13,7 @@ namespace Lovd.Models
             AspNetUserTokens = new HashSet<AspNetUserToken>();
             Comments = new HashSet<Comment>();
             News = new HashSet<News>();
+            Ponds = new HashSet<Pond>();
             TopicForums = new HashSet<TopicForum>();
             Roles = new HashSet<AspNetRole>();
         }
@@ -40,6 +41,7 @@ namespace Lovd.Models
         public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<News> News { get; set; }
+        public virtual ICollection<Pond> Ponds { get; set; }
         public virtual ICollection<TopicForum> TopicForums { get; set; }
 
         public virtual ICollection<AspNetRole> Roles { get; set; }

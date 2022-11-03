@@ -12,7 +12,7 @@ namespace Lovd.Models
         }
 
         public int IdArticle { get; set; }
-        public string NewsHtml { get; set; } = null!;
+        public string ArticleHtml { get; set; } = null!;
         public int? Likes { get; set; }
         public int? DisLikes { get; set; }
         public string UserId { get; set; } = null!;
@@ -21,7 +21,7 @@ namespace Lovd.Models
         public string Announce { get; set; } = null!;
         public byte[]? PhotoPreview { get; set; }
 
-        public virtual AspNetUser? User { get; set; } = null!;
+        public virtual AspNetUser User { get; set; } = null!;
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<LikesWithDislike> LikesWithDislikes { get; set; }
     }

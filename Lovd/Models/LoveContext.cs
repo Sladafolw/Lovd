@@ -23,10 +23,14 @@ namespace Lovd.Models
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; } = null!;
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; } = null!;
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
+        public virtual DbSet<Bait> Baits { get; set; } = null!;
         public virtual DbSet<Comment> Comments { get; set; } = null!;
+        public virtual DbSet<KindOfFish> KindOfFishes { get; set; } = null!;
         public virtual DbSet<LikesWithDislike> LikesWithDislikes { get; set; } = null!;
+        public virtual DbSet<Lure> Lures { get; set; } = null!;
         public virtual DbSet<Message> Messages { get; set; } = null!;
         public virtual DbSet<News> News { get; set; } = null!;
+        public virtual DbSet<Pond> Ponds { get; set; } = null!;
         public virtual DbSet<TopicForum> TopicForums { get; set; } = null!;
         public virtual DbSet<UsersInfo> UsersInfos { get; set; } = null!;
 
@@ -49,8 +53,6 @@ namespace Lovd.Models
                 entity.Property(e => e.Announce).HasMaxLength(1000);
 
                 entity.Property(e => e.DateNews).HasColumnType("datetime");
-
-                entity.Property(e => e.PhotoPreview).HasMaxLength(2000);
 
                 entity.Property(e => e.Title).HasMaxLength(250);
 
@@ -152,6 +154,15 @@ namespace Lovd.Models
                     .HasForeignKey(d => d.UserId);
             });
 
+            modelBuilder.Entity<Bait>(entity =>
+            {
+                entity.Property(e => e.Announce).HasMaxLength(1000);
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.Title).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<Comment>(entity =>
             {
                 entity.HasKey(e => e.IdComments)
@@ -177,6 +188,17 @@ namespace Lovd.Models
                     .HasConstraintName("FK_Comments_AspNetUsers");
             });
 
+            modelBuilder.Entity<KindOfFish>(entity =>
+            {
+                entity.ToTable("KindOfFish");
+
+                entity.Property(e => e.Announce).HasMaxLength(1000);
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.Title).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<LikesWithDislike>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -189,6 +211,15 @@ namespace Lovd.Models
                     .HasConstraintName("FK__LikesWith__UserI__412EB0B6");
             });
 
+            modelBuilder.Entity<Lure>(entity =>
+            {
+                entity.Property(e => e.Announce).HasMaxLength(1000);
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.Title).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<Message>(entity =>
             {
                 entity.HasKey(e => e.MessagesId)
@@ -197,8 +228,6 @@ namespace Lovd.Models
                 entity.Property(e => e.DateForumMessages).HasColumnType("datetime");
 
                 entity.Property(e => e.EditDate).HasColumnType("datetime");
-
-                entity.Property(e => e.Photo).HasMaxLength(2000);
 
                 entity.Property(e => e.Text).HasMaxLength(2000);
 
@@ -216,8 +245,6 @@ namespace Lovd.Models
 
                 entity.Property(e => e.DateNews).HasColumnType("datetime");
 
-                entity.Property(e => e.PhotoPreview).HasMaxLength(2000);
-
                 entity.Property(e => e.Title).HasMaxLength(250);
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
@@ -227,6 +254,23 @@ namespace Lovd.Models
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_News_AspNetUsers1");
+            });
+
+            modelBuilder.Entity<Pond>(entity =>
+            {
+                entity.Property(e => e.Announce).HasMaxLength(1000);
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.IdUser).HasMaxLength(450);
+
+                entity.Property(e => e.Title).HasMaxLength(50);
+
+                entity.HasOne(d => d.IdUserNavigation)
+                    .WithMany(p => p.Ponds)
+                    .HasForeignKey(d => d.IdUser)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Ponds_AspNetUsers");
             });
 
             modelBuilder.Entity<TopicForum>(entity =>
