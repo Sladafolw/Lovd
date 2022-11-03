@@ -21,7 +21,7 @@ namespace Lovd.Models
         public string Announce { get; set; } = null!;
         public byte[]? PhotoPreview { get; set; }
 
-        public virtual AspNetUser User { get; set; } = null!;
+        public virtual AspNetUser? User { get; set; } = null!;
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<LikesWithDislike> LikesWithDislikes { get; set; }
     }

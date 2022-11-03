@@ -22,7 +22,7 @@ namespace Lovd.Controllers
         // GET: News
         public async Task<IActionResult> MainPage()
         { var Article= (from article in _context.Articles
-                     //where(news.PhotoPreview!=null)
+                     where(article.PhotoPreview!=null)
                      select new{ DateNews = article.DateNews,Title = article.Title,Announce = article.Announce,DisLikes = article.DisLikes??0,Likes = article.Likes ?? 0 /*, PhotoPreview= Convert.ToBase64String(news.PhotoPreview)*/
                      }).AsEnumerable().ToList();
             return View(Article);

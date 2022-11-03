@@ -16,7 +16,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Admin" asp-action="CreateNews">
+        <form enctype="multipart/form-data" asp-controller="Admin" asp-action="CreateArticles">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="NewsHtml" class="control-label"></label>
@@ -40,7 +40,7 @@
             </div>
              <div class="form-group">
                 <label text="PhotoPreview" class="control-label"></label>
-                <input  type="file" name="PhotoPreview"  class="form-control" />
+                <input  type="file"   required name="PhotoPreview"  class="form-control" />
              
             </div>
             <div class="form-group">
@@ -56,7 +56,7 @@
 </div>
 
 <div>
-    <a asp-action="IndexNews">Back to List</a>
+    <a asp-action="IndexArticles">Back to List</a>
 </div>
 <style>.textarea{width:100%}</style>
 

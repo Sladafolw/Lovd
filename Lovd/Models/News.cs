@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Lovd.Models
 {
-    public partial class Articles
+    public partial class News
     {
         public int IdNews { get; set; }
-        public string ArticleHtml { get; set; } = null!;
+        public string NewsHtml { get; set; } = null!;
         public string UserId { get; set; } = null!;
         public DateTime DateNews { get; set; }
         public string Title { get; set; } = null!;

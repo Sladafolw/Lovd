@@ -26,7 +26,7 @@ namespace Lovd.Models
         public virtual DbSet<Comment> Comments { get; set; } = null!;
         public virtual DbSet<LikesWithDislike> LikesWithDislikes { get; set; } = null!;
         public virtual DbSet<Message> Messages { get; set; } = null!;
-        public virtual DbSet<Articles> Article { get; set; } = null!;
+        public virtual DbSet<News> News { get; set; } = null!;
         public virtual DbSet<TopicForum> TopicForums { get; set; } = null!;
         public virtual DbSet<UsersInfo> UsersInfos { get; set; } = null!;
 
@@ -208,7 +208,7 @@ namespace Lovd.Models
                     .HasConstraintName("R_20");
             });
 
-            modelBuilder.Entity<Articles>(entity =>
+            modelBuilder.Entity<News>(entity =>
             {
                 entity.HasKey(e => e.IdNews);
 

@@ -52,8 +52,9 @@ namespace Lovd.Controllers
         public async Task<ActionResult> Test()
         { return View(); }
         [HttpPost]
-        public async Task<ActionResult> Test(IFormFileCollection Test)
+        public async Task<ActionResult> Test(IFormFile filemy)
         {
+            var a = filemy.FileName;
             return View();
         }
         public async Task<IActionResult> IndexArticles()
@@ -65,14 +66,14 @@ namespace Lovd.Controllers
         // GET: News/Details/5
         public async Task<IActionResult> DetailsArticles(int? id)
         {
-            if (id == null || _context.Article == null)
+            if (id == null || _context.Articles == null)
             {
                 return NotFound();
             }
 
-            var news = await _context.Article
+            var news = await _context.Articles
                 .Include(n => n.User)
-                .FirstOrDefaultAsync(m => m.IdNews == id);
+                .FirstOrDefaultAsync(m => m.IdArticle == id);
             if (news == null)
             {
                 return NotFound();
@@ -94,17 +95,29 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateArticles([Bind("IdNews,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Articles article, IFormFile PhotoPreview)
+        public async Task<IActionResult> CreateArticles([Bind("IdArticle,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article article, IFormFile PhotoPreview)
         {
             if (ModelState.IsValid)
             {
+                if (PhotoPreview != null)
+                {
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
+                    }
+                    // установка массива байтов
+                    article.PhotoPreview = imageData;
+                }
+                
 
                 _context.Add(article);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexArticles));
             }
             ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", article.UserId);
-            return RedirectToAction("IndexNews");
+            return RedirectToAction("IndexArticles");
         }
 
         // GET: News/Edit/5
@@ -195,7 +208,7 @@ namespace Lovd.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexArticles));
         }
 
         private bool ArticlesExists(int id)

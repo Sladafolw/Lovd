@@ -12,7 +12,7 @@ namespace Lovd.Models
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
             AspNetUserTokens = new HashSet<AspNetUserToken>();
             Comments = new HashSet<Comment>();
-            News = new HashSet<Articles>();
+            News = new HashSet<News>();
             TopicForums = new HashSet<TopicForum>();
             Roles = new HashSet<AspNetRole>();
         }
@@ -39,7 +39,7 @@ namespace Lovd.Models
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Articles> News { get; set; }
+        public virtual ICollection<News> News { get; set; }
         public virtual ICollection<TopicForum> TopicForums { get; set; }
 
         public virtual ICollection<AspNetRole> Roles { get; set; }
