@@ -16,6 +16,7 @@ namespace Lovd.Models
         {
         }
 
+        public virtual DbSet<Article> Articles { get; set; } = null!;
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; } = null!;
         public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; } = null!;
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; } = null!;
@@ -25,7 +26,7 @@ namespace Lovd.Models
         public virtual DbSet<Comment> Comments { get; set; } = null!;
         public virtual DbSet<LikesWithDislike> LikesWithDislikes { get; set; } = null!;
         public virtual DbSet<Message> Messages { get; set; } = null!;
-        public virtual DbSet<News> News { get; set; } = null!;
+        public virtual DbSet<Articles> Article { get; set; } = null!;
         public virtual DbSet<TopicForum> TopicForums { get; set; } = null!;
         public virtual DbSet<UsersInfo> UsersInfos { get; set; } = null!;
 
@@ -40,6 +41,28 @@ namespace Lovd.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Article>(entity =>
+            {
+                entity.HasKey(e => e.IdArticle)
+                    .HasName("PK__News__4559C72D29069D75");
+
+                entity.Property(e => e.Announce).HasMaxLength(1000);
+
+                entity.Property(e => e.DateNews).HasColumnType("datetime");
+
+                entity.Property(e => e.PhotoPreview).HasMaxLength(2000);
+
+                entity.Property(e => e.Title).HasMaxLength(250);
+
+                entity.Property(e => e.UserId).HasMaxLength(450);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Articles)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_News_AspNetUsers");
+            });
+
             modelBuilder.Entity<AspNetRole>(entity =>
             {
                 entity.HasIndex(e => e.NormalizedName, "RoleNameIndex")
@@ -140,19 +163,29 @@ namespace Lovd.Models
 
                 entity.Property(e => e.Text).HasMaxLength(1000);
 
-                entity.HasOne(d => d.IdNewsNavigation)
+                entity.Property(e => e.UserId).HasMaxLength(450);
+
+                entity.HasOne(d => d.IdArticleNavigation)
                     .WithMany(p => p.Comments)
-                    .HasForeignKey(d => d.IdNews)
+                    .HasForeignKey(d => d.IdArticle)
                     .HasConstraintName("R_19");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Comments_AspNetUsers");
             });
 
             modelBuilder.Entity<LikesWithDislike>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.HasOne(d => d.IdNewsNavigation)
+                entity.Property(e => e.UserId).HasMaxLength(450);
+
+                entity.HasOne(d => d.IdArticleNavigation)
                     .WithMany(p => p.LikesWithDislikes)
-                    .HasForeignKey(d => d.IdNews)
+                    .HasForeignKey(d => d.IdArticle)
                     .HasConstraintName("FK__LikesWith__UserI__412EB0B6");
             });
 
@@ -165,9 +198,7 @@ namespace Lovd.Models
 
                 entity.Property(e => e.EditDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Photo)
-                    .HasMaxLength(1)
-                    .IsFixedLength();
+                entity.Property(e => e.Photo).HasMaxLength(2000);
 
                 entity.Property(e => e.Text).HasMaxLength(2000);
 
@@ -177,12 +208,17 @@ namespace Lovd.Models
                     .HasConstraintName("R_20");
             });
 
-            modelBuilder.Entity<News>(entity =>
+            modelBuilder.Entity<Articles>(entity =>
             {
-                entity.HasKey(e => e.IdNews)
-                    .HasName("PK__News__4559C72D29069D75");
+                entity.HasKey(e => e.IdNews);
+
+                entity.Property(e => e.Announce).HasMaxLength(1000);
 
                 entity.Property(e => e.DateNews).HasColumnType("datetime");
+
+                entity.Property(e => e.PhotoPreview).HasMaxLength(2000);
+
+                entity.Property(e => e.Title).HasMaxLength(250);
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
 
@@ -190,7 +226,7 @@ namespace Lovd.Models
                     .WithMany(p => p.News)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_News_AspNetUsers");
+                    .HasConstraintName("FK_News_AspNetUsers1");
             });
 
             modelBuilder.Entity<TopicForum>(entity =>

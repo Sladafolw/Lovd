@@ -1,4 +1,4 @@
-﻿@model Lovd.Models.News
+﻿@model Lovd.Models.Article
 
 @{
     ViewData["Title"] = "Delete";
@@ -56,7 +56,7 @@
     </dl>
     
     <form asp-action="DeleteNews">
-        <input type="hidden" asp-for="IdNews" />
+        <input type="hidden" asp-for="IdArticle" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="IndexNews">Back to List</a>
     </form>

@@ -1,4 +1,4 @@
-﻿@model Lovd.Models.News
+﻿@model Lovd.Models.Article
 
 @{
     ViewData["Title"] = "Details";
@@ -55,6 +55,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="EditNews" asp-route-id="@Model?.IdNews">Edit</a> |
+    <a asp-action="EditNews" asp-route-id="@Model?.IdArticle">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

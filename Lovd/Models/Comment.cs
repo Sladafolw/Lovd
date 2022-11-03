@@ -5,12 +5,14 @@ namespace Lovd.Models
 {
     public partial class Comment
     {
-        public int IdNews { get; set; }
+        public int IdArticle { get; set; }
         public string Text { get; set; } = null!;
         public int IdComments { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? EditDate { get; set; }
+        public string UserId { get; set; } = null!;
 
-        public virtual News IdNewsNavigation { get; set; } = null!;
+        public virtual Article IdArticleNavigation { get; set; } = null!;
+        public virtual AspNetUser User { get; set; } = null!;
     }
 }

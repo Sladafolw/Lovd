@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lovd.Models.News>
+﻿@model IEnumerable<Lovd.Models.Article>
 
 @{
     ViewData["Title"] = "Index";
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.User.Id)
             </td>
             <td>
-                <a asp-action="EditNews" asp-route-id="@item.IdNews">Edit</a> |
-                <a asp-action="DetailsNews" asp-route-id="@item.IdNews">Details</a> |
-                <a asp-action="DeleteNews" asp-route-id="@item.IdNews">Delete</a>
+                <a asp-action="EditNews" asp-route-id="@item.IdArticle">Edit</a> |
+                <a asp-action="DetailsNews" asp-route-id="@item.IdArticle">Details</a> |
+                <a asp-action="DeleteNews" asp-route-id="@item.IdArticle">Delete</a>
             </td>
         </tr>
 }

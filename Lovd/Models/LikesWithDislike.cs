@@ -7,10 +7,10 @@ namespace Lovd.Models
     {
         public bool? Dislike { get; set; }
         public bool? Like { get; set; }
-        public int IdNews { get; set; }
+        public int IdArticle { get; set; }
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; } = null!;
 
-        public virtual News IdNewsNavigation { get; set; } = null!;
+        public virtual Article IdArticleNavigation { get; set; } = null!;
     }
 }

@@ -12,17 +12,18 @@ namespace Lovd.Controllers
     public class AdminController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly RoleManager <IdentityRole> roleManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         private readonly LoveContext _context;
-      
-        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, LoveContext context) 
-        {this.roleManager = roleManager;
-            _context=context;
-           _userManager=userManager;
-          
+
+        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, LoveContext context)
+        {
+            this.roleManager = roleManager;
+            _context = context;
+            _userManager = userManager;
+
 
         }
-      
+
         // GET: Admin/Details/5
         public ActionResult Admin()
         {
@@ -33,12 +34,12 @@ namespace Lovd.Controllers
         public async Task<ActionResult> CreateRole()
         { return View(); }
 
-            // GET: Admin/Create
-            [HttpPost]
-        public async Task <ActionResult> CreateRole(string roleName)
+        // GET: Admin/Create
+        [HttpPost]
+        public async Task<ActionResult> CreateRole(string roleName)
         {
             var roleExist = await roleManager.RoleExistsAsync(roleName);
-            if (!roleExist) 
+            if (!roleExist)
             {
                 var result = await roleManager.CreateAsync(new IdentityRole(roleName));
             }
@@ -55,21 +56,21 @@ namespace Lovd.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> IndexNews()
+        public async Task<IActionResult> IndexArticles()
         {
-            var loveContext = _context.News.Include(n => n.User);
+            var loveContext = _context.Articles.Include(n => n.User);
             return View(await loveContext.ToListAsync());
         }
 
         // GET: News/Details/5
-        public async Task<IActionResult> DetailsNews(int? id)
+        public async Task<IActionResult> DetailsArticles(int? id)
         {
-            if (id == null || _context.News == null)
+            if (id == null || _context.Article == null)
             {
                 return NotFound();
             }
 
-            var news = await _context.News
+            var news = await _context.Article
                 .Include(n => n.User)
                 .FirstOrDefaultAsync(m => m.IdNews == id);
             if (news == null)
@@ -81,7 +82,7 @@ namespace Lovd.Controllers
         }
 
         // GET: News/Create
-        public IActionResult CreateNews()
+        public IActionResult CreateArticles()
         {
             ViewBag.userId = _userManager.GetUserId(HttpContext.User);
             ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id");
@@ -93,34 +94,34 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateNews([Bind("IdNews,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] News news,IFormFile PhotoPreview)
+        public async Task<IActionResult> CreateArticles([Bind("IdNews,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Articles article, IFormFile PhotoPreview)
         {
             if (ModelState.IsValid)
             {
-             
-                _context.Add(news);
+
+                _context.Add(article);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", news.UserId);
-           return RedirectToAction("IndexNews");
+            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", article.UserId);
+            return RedirectToAction("IndexNews");
         }
 
         // GET: News/Edit/5
-        public async Task<IActionResult> EditNews(int? id)
+        public async Task<IActionResult> EditArticles(int? id)
         {
-            if (id == null || _context.News == null)
+            if (id == null || _context.Articles == null)
             {
                 return NotFound();
             }
 
-            var news = await _context.News.FindAsync(id);
-            if (news == null)
+            var article = await _context.Articles.FindAsync(id);
+            if (article == null)
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", news.UserId);
-            return View(news);
+            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", article.UserId);
+            return View(article);
         }
 
         // POST: News/Edit/5
@@ -128,9 +129,9 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditNews(int id, [Bind("IdNews,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] News news)
+        public async Task<IActionResult> EditArticles(int id, [Bind("IdArticle,NewsHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article articles)
         {
-            if (id != news.IdNews)
+            if (id != articles.IdArticle)
             {
                 return NotFound();
             }
@@ -139,12 +140,12 @@ namespace Lovd.Controllers
             {
                 try
                 {
-                    _context.Update(news);
+                    _context.Update(articles);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!NewsExists(news.IdNews))
+                    if (!ArticlesExists(articles.IdArticle))
                     {
                         return NotFound();
                     }
@@ -153,29 +154,29 @@ namespace Lovd.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(IndexNews));
+                return RedirectToAction(nameof(IndexArticles));
             }
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", news.UserId);
-            return View(news);
+            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", articles.UserId);
+            return View(articles);
         }
 
         // GET: News/Delete/5
-        public async Task<IActionResult> DeleteNews(int? id)
+        public async Task<IActionResult> DeleteArticles(int? id)
         {
-            if (id == null || _context.News == null)
+            if (id == null || _context.Articles == null)
             {
                 return NotFound();
             }
 
-            var news = await _context.News
+            var articles = await _context.Articles
                 .Include(n => n.User)
-                .FirstOrDefaultAsync(m => m.IdNews == id);
-            if (news == null)
+                .FirstOrDefaultAsync(m => m.IdArticle == id);
+            if (articles == null)
             {
                 return NotFound();
             }
 
-            return View(news);
+            return View(articles);
         }
 
         // POST: News/Delete/5
@@ -183,23 +184,23 @@ namespace Lovd.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.News == null)
+            if (_context.Articles == null)
             {
                 return Problem("Entity set 'LoveContext.News'  is null.");
             }
-            var news = await _context.News.FindAsync(id);
-            if (news != null)
+            var articles = await _context.Articles.FindAsync(id);
+            if (articles != null)
             {
-                _context.News.Remove(news);
+                _context.Articles.Remove(articles);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool NewsExists(int id)
+        private bool ArticlesExists(int id)
         {
-            return _context.News.Any(e => e.IdNews == id);
+            return _context.Articles.Any(e => e.IdArticle == id);
         }
 
     }
