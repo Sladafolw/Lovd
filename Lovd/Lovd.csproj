@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AjaxControlToolkit" Version="20.1.0" />
+    <PackageReference Include="AjaxMin" Version="5.14.5506.26202" />
     <PackageReference Include="ckeditor-full" Version="4.20.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="HtmlSanitizer" Version="8.0.601" />
@@ -23,6 +25,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.JSInterop" Version="6.0.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="MicrosoftAjax" Version="4.0.20526" />
     <PackageReference Include="Modernizr" Version="2.8.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="SendGrid" Version="9.28.1" />

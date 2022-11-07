@@ -110,7 +110,7 @@ namespace Lovd.Controllers
                     // установка массива байтов
                     article.PhotoPreview = imageData;
                 }
-                
+
 
                 _context.Add(article);
                 await _context.SaveChangesAsync();
@@ -133,7 +133,7 @@ namespace Lovd.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", article.UserId);
+            //ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", article.UserId);
             return View(article);
         }
 
@@ -142,7 +142,7 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditArticles(int id, [Bind("IdArticle,ArticleHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article articles)
+        public async Task<IActionResult> EditArticles(int id, [Bind("IdArticle,ArticleHtml,Likes,DisLikes,UserId,DateNews,Title,PhotoPreview,Announce")] Article articles)
         {
             if (id != articles.IdArticle)
             {
@@ -195,13 +195,13 @@ namespace Lovd.Controllers
         // POST: News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int IdArticle)
         {
             if (_context.Articles == null)
             {
                 return Problem("Entity set 'LoveContext.News'  is null.");
             }
-            var articles = await _context.Articles.FindAsync(id);
+            var articles = await _context.Articles.FindAsync(IdArticle);
             if (articles != null)
             {
                 _context.Articles.Remove(articles);

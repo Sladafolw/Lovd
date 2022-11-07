@@ -12,10 +12,10 @@
     <!-- Bootstrap CSS -->
 
     <link href="/examples/vendors/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
-   </head>
+</head>
 <body>
 
-    
+
 
     <div class="container">
 
@@ -24,11 +24,11 @@
 
         <div class="row">
             @foreach (var a in Model.Take(8))
-            {@*@Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64," 
-                                + Convert.ToBase64String(a.PhotoPreview ?? 3) + "\" />")*@
+            {@*@Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                    + Convert.ToBase64String(a.PhotoPreview ?? 3) + "\" />")*@
                 <div class="col-md-6">
                     <!-- Карточка, в которой в качестве элемента шапки используется div -->
-                <div class="card mx-auto mb-4" style="max-width: 300px;">
+                <div class="card mx-auto mb-4"  style="max-width: 300px;min-height: 450px;max-height: 450px;">
                         <!-- Шапка -->
                     <div class="card-header">
                             @a.Title
@@ -36,20 +36,39 @@
                         <!-- Текстовый контент -->
                     <div class="card-body">
                             <div class="myDivCover">
-                                <img object-fit="cover" class="myImg" src="~/Golavl.jpg" alt="im faded">
+                                @{
+                                    var af = String.Format("data:image/gif;base64,{0}", @a.PhotoPreview);
+                                    <img object-fit="cover" class="myImg" src="@af" alt="im faded">
+                                }
 
                             </div>
                             <h4 class="card-title">@a.DateNews </h4>
                             <p class="card-text">@a.Announce</p>
+                                  @*  <form asp-controller="Article" asp-action="DifferentsArticles" par>
+                                <input type="hidden" name="IdArticle" value="@a.IdArticle" />
+                                <button type="submit" class="btn btn-primary">Перейти</button>
+                                </form>*@
 
-                            <a href="#" class="btn btn-primary">Перейти</a>
                         </div>
+                         <a asp-controller="Article" asp-action="DifferentsArticles" style="color:green;text-align:center; width:100%;" asp-route-IdArticle="@a.IdArticle">Перейти</a>
+                     
                     </div><!-- Конец карточки -->
             </div>
             }
         </div>
+        <div class="container">
+            <div class="row">
+                @{
+                    if(ViewBag.Count!=null)
+                for(int i=1; i<=(double)ViewBag.Count/8;i++)
+                {        <a asp-controller="Article" asp-action="MainPage" asp-route-page="@i">@i</a>
+                }}
+             
 
+            </div>
+        </div>
     </div>
+
     <style>
 
         .myImg {
@@ -66,9 +85,9 @@
         }
 
         /* body {
-                    margin: 0;
-                    background-color: dimgray;
-                }*/
+                                            margin: 0;
+                                            background-color: dimgray;
+                                        }*/
 
     </style>
 
@@ -85,30 +104,3 @@
 </body>
 </html>
 
-<script>
-       function a()
-       { var form = document.createElement("form");
-        form.method='post';
-        form.action='<%: Url.Action("AddNews", "News") %>';
-        form.className='form';
-        let lext=document.getElementById('lext');
-       lext.append(form);
-            let forms=document.getElementsByClassName(form);
-           $(".form").load('@Url.Action("AddNews","News")');
-       let as=document.getElementById('partialView');
-       as.hidden=true;
-        var btn = document.createElement("button");
-        btn.attributes= 'asp-controller="Forum" asp-action="MainPage"';
-       btn.type = "submit";
-       btn.h
-       btn.innerHTML = "Click Me";
-         form.appendChild(btn);
-    //let lext=document.getElementById('lext');
-    //   lext.append(form);
-
-    //       var html2Add= "<form method="post" class="form" asp-controller="News" asp-action="MainPage">" +" <button type="submit"> xer</button>" + "</form>"";
-    //             $(".form").load('@Url.Action("AddNews","News")');
-    //              lext.append(html2Add);
-
-       }
-</script>

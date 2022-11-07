@@ -15,7 +15,7 @@
             <input type="hidden" asp-for="IdArticle" />
             <div class="form-group">
                 <label asp-for="ArticleHtml" class="control-label"></label>
-                <input asp-for="ArticleHtml" class="form-control" />
+                <textarea class="textarea" asp-for="ArticleHtml" class="form-control" > </textarea>
                 <span asp-validation-for="ArticleHtml" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <input asp-for="UserId" type="hidden" class="form-control"/>
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,6 +48,10 @@
                 <input asp-for="Announce" class="form-control" />
                 <span asp-validation-for="Announce" class="text-danger"></span>
             </div>
+               <div class="form-group">
+                <label text="PhotoPreview" class="control-label"></label>
+                <input  type="file"   required name="PhotoPreview"  class="form-control" />
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -58,7 +62,17 @@
 <div>
     <a asp-action="IndexArticles">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+@section Scripts {    <script>
+        tinymce.init({
+          selector: 'textarea',
+          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+          tinycomments_mode: 'embedded',
+          tinycomments_author: 'Author name',
+          mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+          ]
+        });
+         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    </script>}

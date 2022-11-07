@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "Lovd/1.0.0": {
         "dependencies": {
+          "AjaxControlToolkit": "20.1.0",
+          "AjaxMin": "5.14.5506.26202",
           "HtmlAgilityPack": "1.11.46",
           "HtmlSanitizer": "8.0.601",
           "HtmlTags": "8.1.1",
@@ -19,6 +21,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.10",
           "Microsoft.JSInterop": "6.0.10",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.10",
+          "MicrosoftAjax": "4.0.20526",
           "Modernizr": "2.8.3",
           "Newtonsoft.Json": "13.0.1",
           "SendGrid": "9.28.1",
@@ -28,6 +31,22 @@
         },
         "runtime": {
           "Lovd.dll": {}
+        }
+      },
+      "AjaxControlToolkit/20.1.0": {
+        "runtime": {
+          "lib/net40/AjaxControlToolkit.dll": {
+            "assemblyVersion": "20.1.0.0",
+            "fileVersion": "20.1.0.0"
+          }
+        }
+      },
+      "AjaxMin/5.14.5506.26202": {
+        "runtime": {
+          "lib/net40/AjaxMin.dll": {
+            "assemblyVersion": "5.14.5506.26196",
+            "fileVersion": "5.14.5506.26196"
+          }
         }
       },
       "AngleSharp/0.17.1": {
@@ -1434,6 +1453,7 @@
           }
         }
       },
+      "MicrosoftAjax/4.0.20526": {},
       "MimeKit/3.4.2": {
         "dependencies": {
           "Portable.BouncyCastle": "1.9.0",
@@ -2501,6 +2521,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AjaxControlToolkit/20.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pW4bkn7IKznIDLS61WOdicrbIR8Njpc0omO71w+xGd+iRjz+41vf+s7PVFpFZ2CfqpdlQIJnObZb67XwarNNxg==",
+      "path": "ajaxcontroltoolkit/20.1.0",
+      "hashPath": "ajaxcontroltoolkit.20.1.0.nupkg.sha512"
+    },
+    "AjaxMin/5.14.5506.26202": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ayrhrlFSQEAw+1w7cdUGozbZ8BxakITQcTezeLKByp69zk0tdto8/Jt3U2ieCq3U1dlvwXGvlthMaTJXeHEaFw==",
+      "path": "ajaxmin/5.14.5506.26202",
+      "hashPath": "ajaxmin.5.14.5506.26202.nupkg.sha512"
+    },
     "AngleSharp/0.17.1": {
       "type": "package",
       "serviceable": true,
@@ -3088,6 +3122,13 @@
       "sha512": "sha512-hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
+    },
+    "MicrosoftAjax/4.0.20526": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-slORMGGsTVOsbS+8Srvq79ZswFPHCAlQVXf3F67cdtDls8ULDua4xAJhi1LPBGvxjiM6y1meb5u8x1Lglcv24A==",
+      "path": "microsoftajax/4.0.20526",
+      "hashPath": "microsoftajax.4.0.20526.nupkg.sha512"
     },
     "MimeKit/3.4.2": {
       "type": "package",

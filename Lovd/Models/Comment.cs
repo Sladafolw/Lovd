@@ -8,6 +8,7 @@ namespace Lovd.Models
         public int IdArticle { get; set; }
         public string Text { get; set; } = null!;
         public int IdComments { get; set; }
+        public int? ReplyId { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? EditDate { get; set; }
         public string UserId { get; set; } = null!;

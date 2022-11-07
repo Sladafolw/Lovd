@@ -1,0 +1,6 @@
+﻿@model IEnumerable<dynamic>
+
+@foreach(var a in Model)
+{
+    @Html.Raw(a.PageHtml);
+}

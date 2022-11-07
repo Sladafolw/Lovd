@@ -2,6 +2,24 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "AjaxControlToolkit/20.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/AjaxControlToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/net40/AjaxControlToolkit.dll": {}
+        }
+      },
+      "AjaxMin/5.14.5506.26202": {
+        "type": "package",
+        "compile": {
+          "lib/net40/AjaxMin.dll": {}
+        },
+        "runtime": {
+          "lib/net40/AjaxMin.dll": {}
+        }
+      },
       "AngleSharp/0.17.1": {
         "type": "package",
         "dependencies": {
@@ -1646,6 +1664,9 @@
             "rid": "win"
           }
         }
+      },
+      "MicrosoftAjax/4.0.20526": {
+        "type": "package"
       },
       "MimeKit/3.4.2": {
         "type": "package",
@@ -3420,6 +3441,41 @@
     }
   },
   "libraries": {
+    "AjaxControlToolkit/20.1.0": {
+      "sha512": "pW4bkn7IKznIDLS61WOdicrbIR8Njpc0omO71w+xGd+iRjz+41vf+s7PVFpFZ2CfqpdlQIJnObZb67XwarNNxg==",
+      "type": "package",
+      "path": "ajaxcontroltoolkit/20.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Web.config.transform",
+        "ajaxcontroltoolkit.20.1.0.nupkg.sha512",
+        "ajaxcontroltoolkit.nuspec",
+        "lib/net40/AjaxControlToolkit.dll",
+        "readme.txt"
+      ]
+    },
+    "AjaxMin/5.14.5506.26202": {
+      "sha512": "ayrhrlFSQEAw+1w7cdUGozbZ8BxakITQcTezeLKByp69zk0tdto8/Jt3U2ieCq3U1dlvwXGvlthMaTJXeHEaFw==",
+      "type": "package",
+      "path": "ajaxmin/5.14.5506.26202",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ajaxmin.5.14.5506.26202.nupkg.sha512",
+        "ajaxmin.nuspec",
+        "lib/net20/AjaxMin.dll",
+        "lib/net35/AjaxMin.dll",
+        "lib/net40/AjaxMin.dll",
+        "tools/net35/AjaxMin.dll",
+        "tools/net35/AjaxMin.targets",
+        "tools/net35/AjaxMinTask.dll",
+        "tools/net40/AjaxMin.dll",
+        "tools/net40/AjaxMin.targets",
+        "tools/net40/AjaxMinTask.dll"
+      ]
+    },
     "AngleSharp/0.17.1": {
       "sha512": "5MPI4bbixlwxb0W/smOMeIR+QlxMy5/5jD+WnIAw4pBC+7AhLPe5bS3cLgQMJyvd6q0A48sG+uYOt/ep406GLA==",
       "type": "package",
@@ -6525,6 +6581,19 @@
         "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
         "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "MicrosoftAjax/4.0.20526": {
+      "sha512": "slORMGGsTVOsbS+8Srvq79ZswFPHCAlQVXf3F67cdtDls8ULDua4xAJhi1LPBGvxjiM6y1meb5u8x1Lglcv24A==",
+      "type": "package",
+      "path": "microsoftajax/4.0.20526",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/MicrosoftAjax.debug.js",
+        "Content/Scripts/MicrosoftAjax.js",
+        "microsoftajax.4.0.20526.nupkg.sha512",
+        "microsoftajax.nuspec"
       ]
     },
     "MimeKit/3.4.2": {
@@ -10901,6 +10970,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "AjaxControlToolkit >= 20.1.0",
+      "AjaxMin >= 5.14.5506.26202",
       "HtmlAgilityPack >= 1.11.46",
       "HtmlSanitizer >= 8.0.601",
       "HtmlTags >= 8.1.1",
@@ -10912,6 +10983,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.10",
       "Microsoft.JSInterop >= 6.0.10",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.10",
+      "MicrosoftAjax >= 4.0.20526",
       "Modernizr >= 2.8.3",
       "Newtonsoft.Json >= 13.0.1",
       "SendGrid >= 9.28.1",
@@ -10964,6 +11036,14 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "AjaxControlToolkit": {
+            "target": "Package",
+            "version": "[20.1.0, )"
+          },
+          "AjaxMin": {
+            "target": "Package",
+            "version": "[5.14.5506.26202, )"
+          },
           "HtmlAgilityPack": {
             "target": "Package",
             "version": "[1.11.46, )"
@@ -11009,6 +11089,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[6.0.10, )"
+          },
+          "MicrosoftAjax": {
+            "target": "Package",
+            "version": "[4.0.20526, )"
           },
           "Modernizr": {
             "target": "Package",
@@ -11056,5 +11140,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.109\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'AjaxControlToolkit 20.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "AjaxControlToolkit",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'AjaxMin 5.14.5506.26202' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "AjaxMin",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

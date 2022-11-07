@@ -44,6 +44,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AjaxControlToolkit": {
+              "target": "Package",
+              "version": "[20.1.0, )"
+            },
+            "AjaxMin": {
+              "target": "Package",
+              "version": "[5.14.5506.26202, )"
+            },
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.46, )"
@@ -89,6 +97,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.10, )"
+            },
+            "MicrosoftAjax": {
+              "target": "Package",
+              "version": "[4.0.20526, )"
             },
             "Modernizr": {
               "target": "Package",
