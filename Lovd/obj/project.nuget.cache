@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oqCNK3Wr0ZBnsJPRMVAVH85gVfZypwhPyWKXHronakC8rHbFDl+TUCWo24+ubzUOszjv817Wv/cceBxCy1kcwA==",
+  "dgSpecHash": "JSRHeH1wn6uHMVq9S+oAYBPjz7ae3d4WO0uU8/Qx0AtM75jWw/YdgYEGcn73FROvidSeBh1mWmY1onnqHMFeBA==",
   "success": true,
   "projectFilePath": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\Lovd.csproj",
   "expectedPackageFiles": [
@@ -213,7 +213,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'AjaxControlToolkit 20.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'AjaxControlToolkit 20.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "AjaxControlToolkit",
       "targetGraphs": [
         "net6.0"
@@ -223,7 +223,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'AjaxMin 5.14.5506.26202' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'AjaxMin 5.14.5506.26202' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "AjaxMin",
       "targetGraphs": [
         "net6.0"

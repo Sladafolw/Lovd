@@ -1,6 +1,14 @@
-﻿@model IEnumerable<dynamic>
+﻿@model Lovd.ModelsView.ArticleComments
 
-@foreach(var a in Model)
-{
-    @Html.Raw(a.PageHtml);
-}
+@Html.Raw(@ViewBag.PageHtml)
+ 
+
+<div>
+ 
+    <partial name="CommentsCreatePartial" />
+   @* <partial name="CommentsPartial" />*@
+
+    @*<textarea asp-for="ArticleHtml" class="textarea" ></textarea>*@
+</div>
+
+<div><partial name="CommentsPartial" /></div>

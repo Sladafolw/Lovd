@@ -1,0 +1,8 @@
+﻿@model Lovd.ModelsView.ArticleComments
+@if (Model.comments != null)
+foreach(var comment in Model.comments)
+    {
+        <div style="border-radius:10px;border-color:palevioletred; min-height:10px;">@Html.Raw(comment.Text);</div>
+
+
+    }

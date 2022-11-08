@@ -1,4 +1,4 @@
-﻿@model Lovd.Models.Bait
+﻿@model Lovd.Models.KindOfFish
 
 @{
     ViewData["Title"] = "Details";
@@ -7,14 +7,14 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Bait</h4>
+    <h4>KindOfFish</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BaitsHtml)
+            @Html.DisplayNameFor(model => model.KindOfFishHtml)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BaitsHtml)
+            @Html.DisplayFor(model => model.KindOfFishHtml)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Date)
@@ -43,6 +43,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="EditFish" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="IndexFish">Back to List</a>
 </div>

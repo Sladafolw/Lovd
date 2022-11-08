@@ -1,0 +1,8 @@
+﻿@model Lovd.ModelsView.ArticleComments
+<form asp-action="CreateComments" asp-controller="Article">
+    <div class="validation" asp-validation-summary="ModelOnly" />
+<textarea asp-for="comment"></textarea>
+    <span asp-validation-for="comment"></span>
+    <button type="submit">Отправить</button>
+</form>
+

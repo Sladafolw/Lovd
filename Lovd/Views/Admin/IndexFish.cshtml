@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lovd.Models.Bait>
+﻿@model IEnumerable<Lovd.Models.KindOfFish>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,13 +7,13 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateFish">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BaitsHtml)
+                @Html.DisplayNameFor(model => model.KindOfFishHtml)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -34,7 +34,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BaitsHtml)
+                @Html.DisplayFor(modelItem => item.KindOfFishHtml)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Announce)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="EditFish" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DetailsFish" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="DeleteFish" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

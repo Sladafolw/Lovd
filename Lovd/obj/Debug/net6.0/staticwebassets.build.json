@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "blk3HAYSvkM/LPBIwFcVejL+3XV4Ok1pN7dUidrhrac=",
+  "Hash": "bN3cimUgbNPxom4TCK66nsrvk4wY8cBqzSTrjkJxSFc=",
   "Source": "Lovd",
   "BasePath": "_content/Lovd",
   "Mode": "Default",
@@ -1120,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Golavl.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\js\\ForTextArea.js",
+      "SourceId": "Lovd",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\",
+      "BasePath": "_content/Lovd",
+      "RelativePath": "js/ForTextArea.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ForTextArea.js"
     },
     {
       "Identity": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\js\\site.js",

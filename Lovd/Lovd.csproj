@@ -33,4 +33,10 @@
     <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Baits\" />
+    <Folder Include="Views\KindOfFish\" />
+    <Folder Include="Views\Lures\" />
+  </ItemGroup>
+
 </Project>
