@@ -4,7 +4,7 @@ using Lovd.Data;
 using Lovd.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Lovd.Models;
-
+using _3psp;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("LovdContextConnection") ?? throw new InvalidOperationException("Connection string 'LovdContextConnection' not found.");
@@ -20,9 +20,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSignalR(hubOptions =>
+{
+    hubOptions.EnableDetailedErrors = true;
+    hubOptions.KeepAliveInterval = System.TimeSpan.FromMinutes(5);
+});
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -30,11 +33,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-
 app.UseRouting();
 app.UseAuthentication(); ;
 app.MapRazorPages();
@@ -44,8 +44,11 @@ app.Use((context, next) =>
     Thread.CurrentPrincipal = context.User;
     return next(context);
 });
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+     name: " ",
+     pattern: "{controller=Article}/{action=DifferentsArticles}");
+    endpoints.MapHub<CommentsHub>("/chat");
+});
 app.Run();

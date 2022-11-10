@@ -7,18 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Lovd.Models;
 using Lovd.Data;
+
 using Lovd.ModelsView;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.AspNetCore.Identity;
 
 namespace Lovd.Controllers
 {
     public class ArticleController : Controller
     {
         private readonly LoveContext _context;
-
-        public ArticleController(LoveContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
+        public ArticleController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, LoveContext context)
         {
-            this._context = context;
+            this.roleManager = roleManager;
+            _context = context;
+            _userManager = userManager;
         }
 
         // GET: News
@@ -60,20 +65,22 @@ namespace Lovd.Controllers
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> DifferentsArticles(int IdArticle)
+        public async Task<IActionResult> DifferentsArticles(int id)
         {
-            if (ArticlesExsist(IdArticle))
+            if (ArticlesExsist(id))
             {
                 var articles = _context.Articles
-                .FirstOrDefault(n => n.IdArticle == IdArticle);
-                 ViewBag.PageHtml = articles.ArticleHtml; 
+                .FirstOrDefault(n => n.IdArticle == id);
+                ViewBag.PageHtml = articles.ArticleHtml;
+                ViewBag.id= id.ToString();
                 ArticleComments articleComments = new ArticleComments();
-                List <Comment> comment = new ();
-                var commentsAll = _context.Comments.Where(n => n.IdArticle == IdArticle);
+                List<Comment> comment = new();
+                var commentsAll = _context.Comments.Include(n => n.User).Where(n => n.IdArticle == id);
                 ;
-                foreach (var item in commentsAll) 
-                { 
+                foreach (var item in commentsAll)
+                {
                     comment.Add(item);
+         
                 }
                 articleComments.comments = comment;
 
@@ -82,23 +89,23 @@ namespace Lovd.Controllers
             return RedirectToAction(nameof(MainPage));
 
         }
-        public  JsonResult CreateComments(int IdArticle)
-        {
-            if (ModelState.IsValid)
-            {
-                //var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
-                //if (result.Succeeded)
-                //{
-                //     //return RedirectToLocal(returnUrl);
-                //}
 
-                ModelState.AddModelError("", "Identifiant ou mot de passe invalide");
-                return Json("error-model-wrong");
+        public async Task<IActionResult> CommentsCreatePartial([Bind("comment")] ModelsView.ArticleComments model)
+        {
+            if (!ModelState.IsValid)
+            {
+                Comment comment = new();
+                comment.Text = model.comment;
+                comment.UserId = GetCurrentUserId();
+                comment.CreatedDate = DateTime.Now;
+                _context.Add(comment);
+                await _context.SaveChangesAsync();
+
             }
 
-            // If we got this far, something failed, redisplay form
-            return Json("error-mode-not-valid");
-        }            
+           
+            return PartialView();
+        }
         public bool ArticlesExsist(int id)
         {
             return _context.Articles.Any(p => p.IdArticle == id);
@@ -107,6 +114,6 @@ namespace Lovd.Controllers
         {
             return _context.Articles.Count();
         }
-
+        private  string GetCurrentUserId() =>  _userManager.GetUserId(HttpContext.User);
     }
 }

@@ -1,8 +1,13 @@
 ﻿@model Lovd.ModelsView.ArticleComments
 
 @Html.Raw(@ViewBag.PageHtml)
- 
 
+<div class="btn-group">
+    <span class="tag tag-sm"><i class="fa fa-hart text-danger"></i> 250 Лайков</span>
+    <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i>Нравится</a>
+    <span class="tag tag-sm"><i class="fa fa-hart text-danger"></i> 250 Лайков</span>
+    <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down">Дизлайк</i></a>
+</div>
 <div>
  
     <partial name="CommentsCreatePartial" />
@@ -10,5 +15,4 @@
 
     @*<textarea asp-for="ArticleHtml" class="textarea" ></textarea>*@
 </div>
-
 <div><partial name="CommentsPartial" /></div>
