@@ -14,23 +14,23 @@
         if (User.Identity.IsAuthenticated)
         {
 
-                <div class="validation" asp-validation-summary="ModelOnly" />
-                <div class="panel">
-                    <div class="panel-body">
-                        <textarea asp-for="comment" id="text" class="form-control" rows="2" placeholder="Добавьте Ваш комментарий"></textarea>
-                        <span asp-validation-for="comment"></span>
-                        <div class="mar-top clearfix">
-                            <button class="btn btn-sm btn-primary pull-right" id="sendBtn" type="submit"><i class="fa fa-pencil fa-fw"></i> Добавить</button>
-                            <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
-                            <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
-                            <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
-                        </div>
+            <div class="validation" asp-validation-summary="ModelOnly" />
+            <div class="panel">
+                <div class="panel-body">
+                    <textarea asp-for="comment" id="text" class="form-control" rows="2" placeholder="Добавьте Ваш комментарий"></textarea>
+                    <span asp-validation-for="comment"></span>
+                    <div class="mar-top clearfix">
+                        <button class="btn btn-sm btn-primary pull-right" id="sendBtn" type="submit"><i class="fa fa-pencil fa-fw"></i> Добавить</button>
+                        <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                        <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
+                        <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
                     </div>
                 </div>
+            </div>
         }
         else
         {
-                <div class="text-danger">Сначала Авторизуйтесь чтобы оставлять комментарии </div>
+            <div class="text-danger">Сначала Авторизуйтесь чтобы оставлять комментарии </div>
         }
     }
 
@@ -45,30 +45,45 @@
             .build();
         hubConnection.start();
         let myId = document.getElementById("myId").value;
-
+        
         setTimeout(function () {
             hubConnection.invoke("OnPageLoad", myId);
-                }, 3050);
+        }, 3050);
 
         hubConnection.logging = true;
         alert('ok');
-       
+        hubConnection.on("Likes", function (count) {
+            alert("RefreshWork");
+            let Likes = document.getElementById("Likes");
+            Likes.textContent = (count).toString();
+        });
+        hubConnection.on("DisLikes", function (count) {
+            alert("RefreshWork");
+            let DisLikes = document.getElementById("Dislikes");
+            DisLikes.textContent = (count).toString();
+        });
         // получение сообщения от сервера
         hubConnection.on("Receive", function (message, userName) {
             var firstElem = document.getElementById("chatroom").firstChild;
-            var html = (`<div id="chatroom"> <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя" src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a> <div class="media-body"> <div class="panel-body">  <div class="mar-btm"> <a href="#" class="btn-link text-semibold media-heading box-inline">${userName}</a> <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> ${new Date()} </p> </div > <p>${message}</p> <div class="pad-ver">   <a class="btn btn-sm btn-default btn-hover-primary" href="#">Ответить</a > </div>       </div > </div>  </div > `);
+            var html = (`<div id="chatroom"> <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя" src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a> <div class="media-body"> <div class="panel-body">  <div class="mar-btm"> <a href="#" class="btn-link text-semibold media-heading box-inline">${userName}</a> <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> ${new Date()} </p> </div > <p>${message}</p> <div class="pad-ver">   <a class="test"  style="text-decoration:none">Ответить</a > </div>       </div > </div>  </div > `);
             console.log(html);
             var wrapper = document.createElement('div');
             wrapper.innerHTML = html;
             document.getElementById("chatroom").insertBefore(wrapper, firstElem);
         });
-  // отправка сообщения на сервер
+        // отправка сообщения на сервер
         document.getElementById("sendBtn").addEventListener("click", function (e) {
             let message = document.getElementById("text").value;
             hubConnection.invoke("Send", message, myId);
         });
+        document.getElementById("LikesBtn").addEventListener("click", function (e) {
 
+            hubConnection.invoke("RefreshLikesArticle", parseInt(Number(myId), 10));
+        });
+        document.getElementById("DisLikesBtn").addEventListener("click", function (e) {
 
+            hubConnection.invoke("RefreshDislikesArticle", parseInt( Number(myId),10) );
+        });
     </script>
 </body>
 </html>

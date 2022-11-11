@@ -3,15 +3,15 @@
 @Html.Raw(@ViewBag.PageHtml)
 
 <div class="btn-group">
-    <span class="tag tag-sm"><i class="fa fa-hart text-danger"></i> 250 Лайков</span>
-    <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i>Нравится</a>
-    <span class="tag tag-sm"><i class="fa fa-hart text-danger"></i> 250 Лайков</span>
-    <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down">Дизлайк</i></a>
+    <span id="Likes" >@ViewBag.Likes</span>
+    <a  id="LikesBtn" class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i>Нравится</a>
+    <span id="Dislikes" >@ViewBag.Dislikes</span>
+    <a id="DisLikesBtn" class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down">Дизлайк</i></a>
 </div>
 <div>
- 
+
     <partial name="CommentsCreatePartial" />
-   @* <partial name="CommentsPartial" />*@
+    @* <partial name="CommentsPartial" />*@
 
     @*<textarea asp-for="ArticleHtml" class="textarea" ></textarea>*@
 </div>

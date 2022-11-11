@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[5.14.5506.26202, )"
             },
+            "BracketPipe": {
+              "target": "Package",
+              "version": "[0.7.7232.28997, )"
+            },
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.46, )"
@@ -111,10 +115,6 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "SendGrid": {
-              "target": "Package",
-              "version": "[9.28.1, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.3.0, )"
@@ -126,6 +126,10 @@
             "ckeditor-full": {
               "target": "Package",
               "version": "[4.20.0, )"
+            },
+            "jQuery.Validation": {
+              "target": "Package",
+              "version": "[1.19.5, )"
             }
           },
           "imports": [

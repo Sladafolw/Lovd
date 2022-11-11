@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Lovd.styles.css" asp-append-version="true" />
+    <script src="https://cdn.tiny.cloud/1/3ejelh8i40w01qxp8jxzhy9zjjdmewyesaee3cnfvkwkkmor/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+
 </head>
 <body>
-    
+
     <header>
-       <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-             <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Рыбалка</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -23,17 +26,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                          <li>   <pre>      </pre>  </li>
+                        <li>   <pre>      </pre>  </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                       <li>   <pre>      </pre>  </li>
+                        <li>   <pre>      </pre>  </li>
                         <li class="nav-item"> <a class="nav-link  text-dark" asp-controller="Forum" asp-action="MainPage">Forum</a></li>
-                          <li>   <pre>      </pre>  </li>
+                        <li>   <pre>      </pre>  </li>
                         <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Article" asp-route-page="1" asp-action="MainPage">Article</a></li>
-                          <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>
+                        <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>
 
-                    </ul> <pre>      </pre> 
+                    </ul> <pre>      </pre>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -53,12 +56,16 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-      <script src="~/js/ForTextArea.js" asp-append-version="true"></script>
+    <script src="~/js/ForTextArea.js" asp-append-version="true"></script>
+    <script src="~/js/ReplyComment.js" asp-append-version="true"></script>
+  
     @await RenderSectionAsync("Scripts", required: false)
-    <style> /*.container-fluid {background-color:gray;width:100%;height:100%;}
-  
-  .back{background-color:gray;width:100%;height:100%;}*/
-  
+    <style>
+        /*.container-fluid {background-color:gray;width:100%;height:100%;}
+
+          .back{background-color:gray;width:100%;height:100%;}*/
+
     </style>
+
 </body>
 </html>

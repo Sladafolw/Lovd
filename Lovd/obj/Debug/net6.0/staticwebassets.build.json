@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QR2ah9C8Ydh7rAPHgtNR0nFAR3D2LS5iYNnHRaweYX0=",
+  "Hash": "vRKLIF628/zQXn0zSp7foZLwb32G+TEt8SUgT/q1mO8=",
   "Source": "Lovd",
   "BasePath": "_content/Lovd",
   "Mode": "Default",
@@ -1137,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\ForTextArea.js"
+    },
+    {
+      "Identity": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\js\\ReplyComment.js",
+      "SourceId": "Lovd",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\",
+      "BasePath": "_content/Lovd",
+      "RelativePath": "js/ReplyComment.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ReplyComment.js"
     },
     {
       "Identity": "C:\\Users\\slava\\source\\repos\\Lovd\\Lovd\\wwwroot\\js\\signalr\\dist\\browser\\signalr.min.js",

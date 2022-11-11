@@ -71,6 +71,8 @@ namespace Lovd.Controllers
             {
                 var articles = _context.Articles
                 .FirstOrDefault(n => n.IdArticle == id);
+                ViewBag.Likes= articles?.Likes ?? 0;
+                ViewBag.DisLikes = articles?.DisLikes ?? 0;
                 ViewBag.PageHtml = articles.ArticleHtml;
                 ViewBag.id= id.ToString();
                 ArticleComments articleComments = new ArticleComments();

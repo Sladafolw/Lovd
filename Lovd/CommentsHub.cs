@@ -40,7 +40,7 @@ namespace _3psp
         //        await Clients.Group(groupname).SendAsync("Notify", $"{a} вошел в чат");
         //    }
         //}
-        string group;
+       
         public bool GroupNameExsist(string group)
         {
             if (group != null && groupNameList != null)
@@ -49,7 +49,7 @@ namespace _3psp
                 {
                     if (a == group)
                     {
-                        this.group = group;
+                        
                         return true;
                     }
                     else return false;
@@ -58,8 +58,67 @@ namespace _3psp
             }
             return false;
         }
-       
-    
+        public async Task RefreshLikesArticle(int articleId)
+        {
+           string group = articleId.ToString();
+            var userLike = _context.LikesWithDislikes.Where(n => GetName() == n.UserId && n.IdArticle == articleId).FirstOrDefault();
+            if (GroupNameExsist(group) && userLike != null)
+            {
+
+
+                if (userLike.Like == true)
+                {
+                    userLike.Like = false;
+                }
+                else { userLike.Like = true; }
+                _context.Update(userLike);
+                await _context.SaveChangesAsync();
+               
+            }
+            else if (userLike == null)
+            {
+                LikesWithDislike likesWithDislike = new LikesWithDislike();
+                likesWithDislike.IdArticle = articleId;
+                likesWithDislike.UserId = _userManager.GetUserId(_httpContext.HttpContext.User);
+                likesWithDislike.Like = true;
+                _context.Add(likesWithDislike);
+                await _context.SaveChangesAsync();
+            }
+            await Clients.Group(group).SendAsync("Likes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).Likes??1);
+
+        }
+
+
+        public async Task RefreshDislikesArticle(int articleId)
+            {
+            string group = articleId.ToString();
+            var userDisLike = _context.LikesWithDislikes.Where(n => GetName() == n.UserId && n.IdArticle == articleId).FirstOrDefault();
+            if (GroupNameExsist(group) && userDisLike != null)
+            {
+
+
+                if (userDisLike.Dislike == true)
+                {
+                    userDisLike.Dislike = false;
+                }
+                else { userDisLike.Dislike = true; }
+                _context.Update(userDisLike);
+                await _context.SaveChangesAsync();
+               
+            }
+            else if (userDisLike == null)
+            {
+                LikesWithDislike likesWithDislike = new LikesWithDislike();
+                likesWithDislike.IdArticle = articleId;
+                likesWithDislike.UserId = _userManager.GetUserId(_httpContext.HttpContext.User);
+                likesWithDislike.Dislike = true;
+                _context.Add(likesWithDislike);
+                await _context.SaveChangesAsync();
+            }
+            await Clients.Group(group).SendAsync("DisLikes",_context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ?? 1);
+
+        }
+
         public async Task OnPageLoad(string group)
         {if(GroupNameExsist(group))
             await Groups.AddToGroupAsync(Context.ConnectionId, group);
@@ -67,9 +126,18 @@ namespace _3psp
         }
         public async Task Send(string message, string group)
         {
+            if (GroupNameExsist(group)){
+                Comment comment = new();
+                comment.Text = message;
+                comment.UserId = _userManager.GetUserId(_httpContext.HttpContext.User);
+                comment.CreatedDate = DateTime.Now;
+                comment.IdArticle = int.Parse(group);
+                _context.Add(comment);
+                await _context.SaveChangesAsync();
+                await Clients.Group(group).SendAsync("Receive", message, GetName());
+            } }
+        public string CountLikes() => _userManager.GetUserName(_httpContext.HttpContext.User);
 
-            await Clients.Group(group).SendAsync("Receive", message, GetName());
-        }
         public string GetName() => _userManager.GetUserName(_httpContext.HttpContext.User);
     }
 }

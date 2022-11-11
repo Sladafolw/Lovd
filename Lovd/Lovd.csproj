@@ -10,10 +10,12 @@
   <ItemGroup>
     <PackageReference Include="AjaxControlToolkit" Version="20.1.0" />
     <PackageReference Include="AjaxMin" Version="5.14.5506.26202" />
+    <PackageReference Include="BracketPipe" Version="0.7.7232.28997" />
     <PackageReference Include="ckeditor-full" Version="4.20.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="HtmlSanitizer" Version="8.0.601" />
     <PackageReference Include="HtmlTags" Version="8.1.1" />
+    <PackageReference Include="jQuery.Validation" Version="1.19.5" />
     <PackageReference Include="MailKit" Version="3.4.2" />
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
@@ -28,7 +30,6 @@
     <PackageReference Include="MicrosoftAjax" Version="4.0.20526" />
     <PackageReference Include="Modernizr" Version="2.8.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SendGrid" Version="9.28.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
     <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
   </ItemGroup>
