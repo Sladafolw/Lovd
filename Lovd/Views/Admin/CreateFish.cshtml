@@ -1,8 +1,13 @@
 ﻿@model Lovd.Models.KindOfFish
+@using Microsoft.AspNetCore.Identity
 
+@using System.Security.Claims
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Create";
 }
+<script src="https://cdn.tiny.cloud/1/3ejelh8i40w01qxp8jxzhy9zjjdmewyesaee3cnfvkwkkmor/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 <h1>Create</h1>
 
@@ -10,7 +15,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form enctype="multipart/form-data" asp-action="CreateFish">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="KindOfFishHtml" class="control-label"></label>
@@ -23,9 +28,9 @@
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhotoPreview" class="control-label"></label>
-                <input asp-for="PhotoPreview" class="form-control" />
-                <span asp-validation-for="PhotoPreview" class="text-danger"></span>
+                <label text="PhotoPreview" class="control-label"></label>
+                <input type="file" required name="PhotoPreview" class="form-control" />
+
             </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -48,3 +53,9 @@
     <a asp-action="IndexFish">Back to List</a>
 </div>
 
+<style>
+    .textarea {
+        width: 100%
+    }
+</style>
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

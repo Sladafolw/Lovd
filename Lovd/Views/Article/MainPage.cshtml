@@ -57,7 +57,7 @@
             <div class="row">
                 @{
                     if (ViewBag.Count != null)
-                        for (int i = 1; i <= (double)ViewBag.Count / 8; i++)
+                        for (int i = 1; i <= (double)((double)@ViewBag.Count+2) / 8; i++)
                         {
                             <a asp-controller="Article" asp-action="MainPage" asp-route-page="@i">@i</a>
                         }

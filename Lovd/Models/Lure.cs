@@ -10,6 +10,6 @@ namespace Lovd.Models
         public DateTime Date { get; set; }
         public string Title { get; set; } = null!;
         public string Announce { get; set; } = null!;
-        public byte[] PhotoPreview { get; set; } = null!;
+        public byte[]? PhotoPreview { get; set; } = null!;
     }
 }

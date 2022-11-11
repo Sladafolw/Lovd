@@ -97,10 +97,9 @@ namespace Lovd.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateArticles([Bind("IdArticle,ArticleHtml,Likes,DisLikes,UserId,DateNews,Title,Announce")] Article article, IFormFile PhotoPreview)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && PhotoPreview != null)
             {
-                if (PhotoPreview != null)
-                {
+               
                     byte[] imageData = null;
                     // считываем переданный файл в массив байтов
                     using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
@@ -109,9 +108,6 @@ namespace Lovd.Controllers
                     }
                     // установка массива байтов
                     article.PhotoPreview = imageData;
-                }
-
-
                 _context.Add(article);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexArticles));
@@ -249,15 +245,27 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BaitsHtml,Date,PhotoPreview,Title,Announce")] Bait bait)
+        public async Task<IActionResult> Create([Bind("Id,BaitsHtml,Date,Title,Announce")] Bait bait, IFormFile PhotoPreview)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && PhotoPreview != null)
             {
-                _context.Add(bait);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
+                    }
+                    // установка массива байтов
+                    bait.PhotoPreview = imageData;
+
+
+                    _context.Add(bait);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                
             }
-            return View(bait);
+                return View(bait);
+            
         }
 
         // GET: Baits/Edit/5
@@ -387,13 +395,23 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateFish([Bind("Id,KindOfFishHtml,Date,PhotoPreview,Title,Announce")] KindOfFish kindOfFish)
+        public async Task<IActionResult> CreateFish([Bind("Id,KindOfFishHtml,Date,PhotoPreview,Title,Announce")] KindOfFish kindOfFish, IFormFile PhotoPreview)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && PhotoPreview != null)
             {
-                _context.Add(kindOfFish);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
+                    }
+                    // установка массива байтов
+                    kindOfFish.PhotoPreview = imageData;
+                    _context.Add(kindOfFish);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                
             }
             return View(kindOfFish);
         }
@@ -524,10 +542,18 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateLures([Bind("Id,LuresHtml,Date,Title,Announce,PhotoPreview")] Lure lure)
+        public async Task<IActionResult> CreateLures([Bind("Id,LuresHtml,Date,Title,Announce")] Lure lure, IFormFile PhotoPreview)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && PhotoPreview != null)
             {
+
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
+                }
+                lure.PhotoPreview = imageData;
                 _context.Add(lure);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

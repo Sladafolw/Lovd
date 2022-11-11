@@ -5,10 +5,12 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+<script src="https://cdn.tiny.cloud/1/3ejelh8i40w01qxp8jxzhy9zjjdmewyesaee3cnfvkwkkmor/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 
-<h1>Create
-   
+<h1>
+    Create
+
 </h1>
 
 <h4>News</h4>
@@ -19,7 +21,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ArticleHtml" class="control-label"></label>
-                <textarea asp-for="ArticleHtml" class="textarea" ></textarea>
+                <textarea asp-for="ArticleHtml" class="textarea"></textarea>
                 <span asp-validation-for="ArticleHtml" class="text-danger"></span>
             </div>
 
@@ -37,10 +39,10 @@
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label text="PhotoPreview" class="control-label"></label>
-                <input  type="file"   required name="PhotoPreview"  class="form-control" />
-             
+                <input type="file" required name="PhotoPreview" class="form-control" />
+
             </div>
             <div class="form-group">
                 <label asp-for="Announce" class="control-label"></label>
@@ -57,6 +59,9 @@
 <div>
     <a asp-action="IndexArticles">Back to List</a>
 </div>
-<style>.textarea{width:100%}</style>
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<style>
+    .textarea {
+        width: 100%
+    }
+</style>
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
