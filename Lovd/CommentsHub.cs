@@ -1,4 +1,5 @@
 ﻿using Lovd.Models;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -61,14 +62,19 @@ namespace _3psp
         public async Task RefreshLikesArticle(int articleId)
         {
            string group = articleId.ToString();
-            var userLike = _context.LikesWithDislikes.Where(n => GetName() == n.UserId && n.IdArticle == articleId).FirstOrDefault();
+            var userLike = _context.LikesWithDislikes.Where(n => _userManager.GetUserId(_httpContext.HttpContext.User) == n.UserId && n.IdArticle == articleId).FirstOrDefault();
             if (GroupNameExsist(group) && userLike != null)
             {
 
 
-                if (userLike.Like == true)
+                if (userLike.Dislike == true || userLike.Like == true)
                 {
-                    userLike.Like = false;
+                    
+                    _context.LikesWithDislikes.Remove(userLike);
+                    await _context.SaveChangesAsync();
+                    await Clients.Group(group).SendAsync("Likes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).Likes ?? 1);
+                    return;
+
                 }
                 else { userLike.Like = true; }
                 _context.Update(userLike);
@@ -92,14 +98,18 @@ namespace _3psp
         public async Task RefreshDislikesArticle(int articleId)
             {
             string group = articleId.ToString();
-            var userDisLike = _context.LikesWithDislikes.Where(n => GetName() == n.UserId && n.IdArticle == articleId).FirstOrDefault();
+            var userDisLike = _context.LikesWithDislikes.Where(n => _userManager.GetUserId(_httpContext.HttpContext.User) == n.UserId && n.IdArticle == articleId).FirstOrDefault();
             if (GroupNameExsist(group) && userDisLike != null)
             {
 
 
-                if (userDisLike.Dislike == true)
+                if (userDisLike.Dislike == true|| userDisLike.Like==true)
                 {
-                    userDisLike.Dislike = false;
+                    _context.LikesWithDislikes.Remove(userDisLike);
+                    await _context.SaveChangesAsync();
+                    await Clients.Group(group).SendAsync("DisLikes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ?? 1);
+                    return;
+
                 }
                 else { userDisLike.Dislike = true; }
                 _context.Update(userDisLike);

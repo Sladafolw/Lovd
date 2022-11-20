@@ -55,7 +55,7 @@
         hubConnection.on("Likes", function (count) {
             alert("RefreshWork");
             let Likes = document.getElementById("Likes");
-            Likes.textContent = (count).toString();
+            Likes.innerHTML = (count).toString();
         });
         hubConnection.on("DisLikes", function (count) {
             alert("RefreshWork");

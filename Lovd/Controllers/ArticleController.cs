@@ -29,10 +29,10 @@ namespace Lovd.Controllers
         // GET: News
         public async Task<IActionResult> MainPage(int page)
         {
-            if ((double)ArticlesCount() / 8 >= page - 1)
+            if (Math.Ceiling((double)ArticlesCount() / 8) >= page)
             {
                 ViewBag.Count = ArticlesCount();
-                if (page == 1)
+                if (page == 0)
                 {
                     var _Article = (from article in _context.Articles
                                     where (article.PhotoPreview != null)
@@ -48,19 +48,22 @@ namespace Lovd.Controllers
                                     }).Take(8).AsEnumerable().ToList();
                     return View(_Article);
                 }
-                var Article = (from article in _context.Articles
-                               where (article.PhotoPreview != null)
-                               select new
-                               {
-                                   IdArticle = article.IdArticle,
-                                   DateNews = article.DateNews,
-                                   Title = article.Title,
-                                   Announce = article.Announce,
-                                   DisLikes = article.DisLikes ?? 0,
-                                   Likes = article.Likes ?? 0,
-                                   PhotoPreview = Convert.ToBase64String(article.PhotoPreview)
-                               }).Skip(page * 8).Take(8).AsEnumerable().ToList();
-                return View(Article);
+                else
+                {
+                    var Article = (from article in _context.Articles
+                                   where (article.PhotoPreview != null)
+                                   select new
+                                   {
+                                       IdArticle = article.IdArticle,
+                                       DateNews = article.DateNews,
+                                       Title = article.Title,
+                                       Announce = article.Announce,
+                                       DisLikes = article.DisLikes ?? 0,
+                                       Likes = article.Likes ?? 0,
+                                       PhotoPreview = Convert.ToBase64String(article.PhotoPreview)
+                                   }).Skip((page) * 8).Take(8).AsEnumerable().ToList();
+                    return View(Article);
+                }
             }
             return View();
         }

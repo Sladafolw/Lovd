@@ -23,12 +23,23 @@ namespace Lovd.Controllers
 
 
         }
-
-        // GET: Admin/Details/5
+        [HttpGet]
+        public async Task<ActionResult> SetUserRole()
+        {
+            RedirectToAction("Admin");
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> SetUserRole(string name,string role)
+        {
+            RedirectToAction("Admin");
+            return View();
+        }
         public ActionResult Admin()
         {
             return View();
         }
+
         [HttpGet]
         //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> CreateRole()
@@ -45,6 +56,7 @@ namespace Lovd.Controllers
             }
             return View();
         }
+
         [HttpGet]
         public async Task<ActionResult> Acces()
         { return View(); }

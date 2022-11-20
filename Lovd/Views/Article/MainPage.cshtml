@@ -15,7 +15,11 @@
     <link href="/examples/vendors/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+    <div>
+        @*<form  asp-controller="Article" asp-action="CreateBaits">
+            <input />
+        </form>*@
+    </div>
     <div class="container">
 
         <h1 class="h4 text-center my-5"> Новости</h1>
@@ -27,7 +31,7 @@
             + Convert.ToBase64String(a.PhotoPreview ?? 3) + "\" />")*@
                 <div class="col-md-6">
                     <!-- Карточка, в которой в качестве элемента шапки используется div -->
-                    <div class="card mx-auto mb-4" style="max-width: 300px;min-height: 450px;max-height: 450px;">
+                    <div class="card mx-auto mb-4" style="max-width: 300px;min-height: 480px;max-height: 480px;">
                         <!-- Шапка -->
                         <div class="card-header">
                             @a.Title
@@ -57,9 +61,10 @@
             <div class="row">
                 @{
                     if (ViewBag.Count != null)
-                        for (int i = 1; i <= (double)((double)@ViewBag.Count+2) / 8; i++)
+                        for (
+                            int i = 1; i <= Math.Ceiling((double)(@ViewBag.Count) / 8); i++)
                         {
-                            <a asp-controller="Article" asp-action="MainPage" asp-route-page="@i">@i</a>
+                            <a asp-controller="Article" asp-action="MainPage" asp-route-page="@(i-1)">@i</a>
                         }
                 }
 
@@ -68,22 +73,6 @@
         </div>
     </div>
 
-    <style>
-
-        .myImg {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            object-fit: cover;
-        }
-
-        .myDivCover {
-            width: 267px;
-            height: 130px;
-            border: 1px solid Red;
-        }
-
-    </style>
 
 
     <!-- jQuery -->

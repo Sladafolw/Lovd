@@ -15,8 +15,7 @@ builder.Services.AddDbContext<LoveContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDefaultIdentity<IdentityUser>
     (options => options.SignIn.RequireConfirmedAccount = true
-    ).AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<LovdContext>();
+    ).AddRoles<IdentityRole>().AddRoleManager<RoleManager<IdentityRole>>().AddEntityFrameworkStores<LovdContext>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 builder.Services.AddControllersWithViews();

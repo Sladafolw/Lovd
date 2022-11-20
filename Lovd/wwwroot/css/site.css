@@ -16,3 +16,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+.myImg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    object-fit: cover;
+}
+
+.myDivCover {
+    width: 267px;
+    height: 130px;
+    border: 1px solid Red;
+}

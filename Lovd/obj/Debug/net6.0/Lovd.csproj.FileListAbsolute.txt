@@ -580,3 +580,13 @@ C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\refint\Lovd.dll
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\Lovd.pdb
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\Lovd.genruntimeconfig.cache
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\ref\Lovd.dll
+C:\Users\slava\source\repos\Lovd\Lovd\bin\Debug\net6.0\HtmlTags.AspNetCore.dll
+C:\Users\slava\source\repos\Lovd\Lovd\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\slava\source\repos\Lovd\Lovd\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\slava\source\repos\Lovd\Lovd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\slava\source\repos\Lovd\Lovd\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\staticwebassets\msbuild.Lovd.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\staticwebassets\msbuild.build.Lovd.props
+C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Lovd.props
+C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Lovd.props
+C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net6.0\staticwebassets.pack.json

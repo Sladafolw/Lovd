@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,8 +30,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -42,8 +42,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "AjaxControlToolkit": {
               "target": "Package",
@@ -53,9 +53,13 @@
               "target": "Package",
               "version": "[5.14.5506.26202, )"
             },
+            "AngleSharp": {
+              "target": "Package",
+              "version": "[0.17.1, )"
+            },
             "BracketPipe": {
               "target": "Package",
-              "version": "[0.7.7232.28997, )"
+              "version": "[0.7.7087.41529, )"
             },
             "HtmlAgilityPack": {
               "target": "Package",
@@ -68,6 +72,10 @@
             "HtmlTags": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "HtmlTags.AspNetCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
             },
             "MailKit": {
               "target": "Package",
@@ -84,6 +92,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.TagHelpers": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -151,7 +163,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -5,6 +5,7 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Lovd
 build_property.RootNamespace = Lovd
@@ -263,6 +264,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhMdXJlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/SetUserRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2V0VXNlclJvbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/Test.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -287,6 +292,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxNYWluUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Baits/BaitsMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdHNcQmFpdHNNYWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Forum/MainPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ydW1cTWFpblBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -297,6 +306,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/KindOfFish/KindOfFishMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2luZE9mRmlzaFxLaW5kT2ZGaXNoTWFpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Lures/LuresMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVyZXNcTHVyZXNNYWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Shared/_LoginPartial.cshtml]
