@@ -94,7 +94,10 @@ namespace Lovd.Controllers
             return RedirectToAction(nameof(MainPage));
 
         }
-
+        public async Task<IActionResult> Search() 
+        {
+            return View();
+        }
         public async Task<IActionResult> CommentsCreatePartial([Bind("comment")] ModelsView.ArticleComments model)
         {
             if (!ModelState.IsValid)
