@@ -18,18 +18,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-           
+            <th>PhotoPreview</th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Announce)
             </th>
-            <th></th>
+         
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.BaitsHtml)
@@ -38,7 +39,10 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhotoPreview)
+                       @{  
+                       
+                                    <img object-fit="cover" class="myImg" src="@String.Format("data:image/gif;base64,{0}",Convert.ToBase64String(item.PhotoPreview))" alt="im faded">}
+             
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)

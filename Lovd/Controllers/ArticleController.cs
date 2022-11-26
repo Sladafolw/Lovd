@@ -103,7 +103,7 @@ namespace Lovd.Controllers
             if (!ModelState.IsValid)
             {
                 Comment comment = new();
-                comment.Text = model.comment;
+                comment.Text = model?.comment;
                 comment.UserId = GetCurrentUserId();
                 comment.CreatedDate = DateTime.Now;
                 _context.Add(comment);

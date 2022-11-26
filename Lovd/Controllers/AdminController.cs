@@ -1,9 +1,11 @@
-﻿using Lovd.Data;
+﻿
+using Lovd.Data;
 using Lovd.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,17 +25,25 @@ namespace Lovd.Controllers
 
 
         }
-        [HttpGet]
-        public async Task<ActionResult> SetUserRole()
+
+        [HttpPost]
+        public async Task<ActionResult>  UserFind(string name)
         {
-            RedirectToAction("Admin");
-            return View();
+            PartialView("AllUserWithRoles", "namw");
+            return View("SetUserRole");
         }
         [HttpPost]
-        public async Task<ActionResult> SetUserRole(string name,string role)
+        public async Task<ActionResult> SetUserRole(string name, string role)
         {
-            RedirectToAction("Admin");
-            return View();
+            IdentityUser user = await _userManager?.FindByNameAsync(name);
+            IdentityRole _role = await roleManager?.FindByNameAsync(role);
+            if (user != null && _role != null)
+            {
+              await _userManager.AddToRoleAsync(user,role);
+              await _context.SaveChangesAsync();
+            }
+           return RedirectToAction(nameof(Admin));
+        
         }
         public ActionResult Admin()
         {
@@ -111,15 +121,15 @@ namespace Lovd.Controllers
         {
             if (ModelState.IsValid && PhotoPreview != null)
             {
-               
-                    byte[] imageData = null;
-                    // считываем переданный файл в массив байтов
-                    using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
-                    {
-                        imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
-                    }
-                    // установка массива байтов
-                    article.PhotoPreview = imageData;
+
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
+                }
+                // установка массива байтов
+                article.PhotoPreview = imageData;
                 _context.Add(article);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexArticles));
@@ -245,6 +255,10 @@ namespace Lovd.Controllers
 
             return View(bait);
         }
+        public IActionResult SetUserRole()
+        {
+            return View();
+        }
 
         // GET: Baits/Create
         public IActionResult CreateBaits()
@@ -257,27 +271,27 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BaitsHtml,Date,Title,Announce")] Bait bait, IFormFile PhotoPreview)
+        public async Task<IActionResult> CreateBaits([Bind("Id,BaitsHtml,Date,Title,Announce")]  Bait bait, IFormFile PhotoPreview)
         {
             if (ModelState.IsValid && PhotoPreview != null)
             {
-                    byte[] imageData = null;
-                    // считываем переданный файл в массив байтов
-                    using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
-                    {
-                        imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
-                    }
-                    // установка массива байтов
-                    bait.PhotoPreview = imageData;
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
+                }
+                // установка массива байтов
+                bait.PhotoPreview = imageData;
 
 
-                    _context.Add(bait);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                
+                _context.Add(bait);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(IndexBaits));
+
             }
-                return View(bait);
-            
+            return View(bait);
+
         }
 
         // GET: Baits/Edit/5
@@ -326,7 +340,7 @@ namespace Lovd.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexBaits));
             }
             return View(bait);
         }
@@ -365,7 +379,7 @@ namespace Lovd.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexBaits));
         }
 
         private bool BaitExists(int id)
@@ -411,19 +425,19 @@ namespace Lovd.Controllers
         {
             if (ModelState.IsValid && PhotoPreview != null)
             {
-                
-                    byte[] imageData = null;
-                    // считываем переданный файл в массив байтов
-                    using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
-                    {
-                        imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
-                    }
-                    // установка массива байтов
-                    kindOfFish.PhotoPreview = imageData;
-                    _context.Add(kindOfFish);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                
+
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(PhotoPreview.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)PhotoPreview.Length);
+                }
+                // установка массива байтов
+                kindOfFish.PhotoPreview = imageData;
+                _context.Add(kindOfFish);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(IndexFish));
+
             }
             return View(kindOfFish);
         }
@@ -474,7 +488,7 @@ namespace Lovd.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexFish));
             }
             return View(kindOfFish);
         }
@@ -513,7 +527,7 @@ namespace Lovd.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexFish));
         }
 
         private bool KindOfFishExists(int id)
@@ -568,7 +582,7 @@ namespace Lovd.Controllers
                 lure.PhotoPreview = imageData;
                 _context.Add(lure);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexLures));
             }
             return View(lure);
         }
@@ -658,7 +672,7 @@ namespace Lovd.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexLures));
         }
 
         private bool LureExists(int id)

@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+    @model string 
+@{ var users = UserManager.Users.AsEnumerable();
+    var role = RoleManager.Roles.AsEnumerable();
+    @foreach (var user in users)
+    {
+        <table>
+            <tr>
+                <th>user</th>
+                <th>role</th>
+            </tr>
+            <tr>
+                <tb>@user?.UserName.ToString()</tb>
+                <tb>@UserManager.GetRolesAsync(user)</tb>
+            </tr>
+        </table>}}

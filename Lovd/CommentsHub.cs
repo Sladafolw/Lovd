@@ -72,7 +72,7 @@ namespace _3psp
                     
                     _context.LikesWithDislikes.Remove(userLike);
                     await _context.SaveChangesAsync();
-                    await Clients.Group(group).SendAsync("Likes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).Likes ?? 1);
+                    await Clients.Group(group).SendAsync("Likes", _context.Articles?.FirstOrDefault(n => n.IdArticle == articleId).Likes ?? 1);
                     return;
 
                 }

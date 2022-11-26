@@ -24,8 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Announce)
             </th>
-           
-            <th></th>
+            <th>PhotoPreview</th>
         </tr>
     </thead>
     <tbody>
@@ -44,7 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Announce)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhotoPreview)
+                @{
+
+                    <img object-fit="cover" class="myImg" src="@String.Format("data:image/gif;base64,{0}",Convert.ToBase64String(item.PhotoPreview))" alt="im faded">}
             </td>
             <td>
                 <a asp-action="EditLures" asp-route-id="@item.Id">Edit</a> |

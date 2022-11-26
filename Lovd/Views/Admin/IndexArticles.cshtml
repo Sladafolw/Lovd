@@ -21,6 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.DisLikes)
             </th>
+            <th>PhotoPreview</th>
             <th>
                 @Html.DisplayNameFor(model => model.DateNews)
             </th>
@@ -33,11 +34,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.User)
             </th>
-            <th></th>
+
+
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ArticleHtml)
@@ -49,6 +52,10 @@
                 @Html.DisplayFor(modelItem => item.DisLikes)
             </td>
             <td>
+                @{
+                    <img object-fit="cover" class="myImg" src="@String.Format("data:image/gif;base64,{0}",Convert.ToBase64String(item.PhotoPreview))" alt="im faded">
+                    }
+<td>
                 @Html.DisplayFor(modelItem => item.DateNews)
             </td>
             <td>

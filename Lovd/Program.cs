@@ -69,11 +69,11 @@ app.Use((context, next) =>
     Thread.CurrentPrincipal = context.User;
     return next(context);
 });
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
+app.MapControllerRoute (
      name: " ",
      pattern: "{controller=Article}/{action=DifferentsArticles}");
+app.UseEndpoints(endpoints =>
+{
     endpoints.MapHub<CommentsHub>("/chat");
 });
 app.Run();
