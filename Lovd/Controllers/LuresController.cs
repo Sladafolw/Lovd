@@ -20,7 +20,7 @@ namespace Lovd.Controllers
 
         public async Task<IActionResult> MainPage(int page)
         {
-            if (Math.Ceiling((double)LuresCount() / 8) >= page)
+            if (Math.Ceiling((double)LuresCount() / 9) >= page)
             {
                 ViewBag.Count = LuresCount();
                 if (page == 0)
@@ -29,13 +29,13 @@ namespace Lovd.Controllers
                                     where (lures.PhotoPreview != null)
                                     select new
                                     {
-                                        IdArticle = lures.Id,
-                                        DateNews = lures.Date,
+                                        Id = lures.Id,
+                                        Date = lures.Date,
                                         Title = lures.Title,
                                         Announce = lures.Announce,
                                     
-                                        PhotoPreview = Convert.ToBase64String(lures.PhotoPreview)
-                                    }).Take(8).AsEnumerable().ToList();
+                                        PhotoPreview = lures.PhotoPreview
+                                    }).Take(9).AsEnumerable().ToList();
                     return View(_Lures);
                 }
                 else
@@ -44,13 +44,13 @@ namespace Lovd.Controllers
                                    where (_lures.PhotoPreview != null)
                                    select new
                                    {
-                                       IdArticle = _lures.Id,
+                                       Id= _lures.Id,
                                        DateNews = _lures.Date,
                                        Title = _lures.Title,
                                        Announce = _lures.Announce,
                                       
-                                       PhotoPreview = Convert.ToBase64String(_lures.PhotoPreview)
-                                   }).Skip((page) * 8).Take(8).AsEnumerable().ToList();
+                                       PhotoPreview = _lures.PhotoPreview
+                                   }).Skip((page) * 9).Take(9).AsEnumerable().ToList();
                     return View(lures);
                 }
             }
@@ -73,6 +73,14 @@ namespace Lovd.Controllers
             }
             return RedirectToAction(nameof(MainPage));
 
+        }
+        public IActionResult Search(string name)
+        {
+
+            IEnumerable<dynamic> a = _context.Lures.Where(l => l.Title.StartsWith(name)).ToList();
+
+
+            return View("MainPage",a);
         }
         public bool LuresExsist(int id)
         {

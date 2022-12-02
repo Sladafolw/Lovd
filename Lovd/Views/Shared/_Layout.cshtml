@@ -34,11 +34,17 @@
                         <li class="nav-item"> <a class="nav-link  text-dark" asp-controller="Forum" asp-action="MainPage">Forum</a></li>
                         <li>   <pre>      </pre>  </li>
                         <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Article" asp-route-page="0" asp-action="MainPage">Статьи</a></li>
-                        <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>
-                        <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Lures" asp-route-page="0" asp-action="MainPage">Приманки</a></li>
-                        <li class="nav-item"> <a class="nav-link text-dark" asp-controller="KindOfFish" asp-route-page="0" asp-action="MainPage">Виды рыб</a></li>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li>   <pre>      </pre>  </li>
 
-                    </ul> <pre>      </pre>
+                            <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>}
+                            <li>   <pre>      </pre>  </li>
+                            <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Lures" asp-route-page="0" asp-action="MainPage">Приманки</a></li>
+                            <li>   <pre>      </pre>  </li>
+                            <li class="nav-item"> <a class="nav-link text-dark" asp-controller="KindOfFish" asp-route-page="0" asp-action="MainPage">Виды рыб</a></li>
+
+                        </ul> <pre>      </pre>
                     <partial name="_LoginPartial" />
                 </div>
             </div>

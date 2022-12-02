@@ -21,43 +21,46 @@
         </form>*@
     </div>
     <div class="container">
-
+        <form asp-action="Search" asp-controller="Article" style="text-align:right; ">
+            <input type="text" name="name" />
+            <button type="submit">Искать</button>
+        </form>
         <h1 class="h4 text-center my-5"> Новости</h1>
 
 
         <div class="row">
-            @foreach (var a in Model.Take(8))
+            @foreach (var a in Model.Take(9))
             {@*@Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
-            + Convert.ToBase64String(a.PhotoPreview ?? 3) + "\" />")*@
-                <div class="col-md-4">
-                    <!-- Карточка, в которой в качестве элемента шапки используется div -->
-                    <div class="card mx-auto mb-4" style="max-width: 300px;min-height: 480px;max-height: 480px;">
-                        <!-- Шапка -->
-                        <div class="card-header">
-                            @a.Title
-                        </div>
-                        <!-- Текстовый контент -->
-                        <div class="card-body">
-                            <div class="myDivCover">
-                                @{
-                                    var af = String.Format("data:image/gif;base64,{0}", @a.PhotoPreview);
-                                    <img object-fit="cover" class="myImg" src="@af" alt="im faded">
-                                }
+                + Convert.ToBase64String(a.PhotoPreview ?? 3) + "\" />")*@
+            <div class="col-md-4">
+                <!-- Карточка, в которой в качестве элемента шапки используется div -->
+                <div class="card mx-auto mb-4" style="max-width: 300px;min-height: 480px;max-height: 480px;">
+                    <!-- Шапка -->
+                    <div class="card-header">
+                        @a.Title
+                    </div>
+                    <!-- Текстовый контент -->
+                    <div class="card-body">
+                        <div class="myDivCover">
+                            @{
+                                var af = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(@a.PhotoPreview));
+                                <img object-fit="cover" class="myImg" src="@af" alt="im faded">
+                            }
 
-                            </div>
-                            <h4 class="card-title">@a.DateNews </h4>
-                            <p class="card-text">@a.Announce</p>
                         </div>
-                        <div class="btn-group">
-                            <span id="Likes">@a.Likes</span>
-                            <button style="border:0;" id="likebtn"><i class="fa fa-thumbs-up"></i></button>
-                            <span id="Dislikes">@a.DisLikes</span>
-                            <button style="border:0;" id="dislikebtn"><i class="fa fa-thumbs-down"></i></button>
-                        </div>
-                        <a asp-controller="Article" asp-action="DifferentsArticles" style="color:green;text-align:center; width:100%;" asp-route-id="@a.IdArticle">Перейти</a>
-                    </div><!-- Конец карточки -->
-                </div>
-            }
+                        <h4 class="card-title">@a.DateNews </h4>
+                        <p class="card-text">@a.Announce</p>
+                    </div>
+                    <div class="btn-group">
+                        <span id="Likes">@a.Likes</span>
+                        <button style="border:0;" id="likebtn"><i class="fa fa-thumbs-up"></i></button>
+                        <span id="Dislikes">@a.DisLikes</span>
+                        <button style="border:0;" id="dislikebtn"><i class="fa fa-thumbs-down"></i></button>
+                    </div>
+                    <a asp-controller="Article" asp-action="DifferentsArticles" style="color:green;text-align:center; width:100%;" asp-route-id="@a.IdArticle">Перейти</a>
+                </div><!-- Конец карточки -->
+            </div>
+        }
         </div>
         <div class="container">
             <div class="row">
@@ -83,8 +86,8 @@
 
 
                 </div>
-                </div>
             </div>
+        </div>
     </div>
 
 

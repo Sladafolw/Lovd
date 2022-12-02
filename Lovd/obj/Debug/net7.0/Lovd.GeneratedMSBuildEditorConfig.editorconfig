@@ -312,12 +312,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Home/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/KindOfFish/DifferentsFish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2luZE9mRmlzaFxEaWZmZXJlbnRzRmlzaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/KindOfFish/MainPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2luZE9mRmlzaFxNYWluUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/KindOfFish/SearchPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2luZE9mRmlzaFxTZWFyY2hQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Lures/DifferentsLures.cshtml]

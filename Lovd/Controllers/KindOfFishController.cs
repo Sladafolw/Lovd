@@ -19,7 +19,7 @@ namespace Lovd.Controllers
         }
         public async Task<IActionResult> MainPage(int page)
         {
-            if (Math.Ceiling((double)FishCount() / 8) >= page)
+            if (Math.Ceiling((double)FishCount() / 9) >= page)
             {
                 ViewBag.Count = FishCount();
                 if (page == 0)
@@ -28,13 +28,13 @@ namespace Lovd.Controllers
                                   where (fish.PhotoPreview != null)
                                   select new
                                   {
-                                      IdArticle = fish.Id,
-                                      DateNews = fish.Date,
+                                      Id = fish.Id,
+                                      Date = fish.Date,
                                       Title = fish.Title,
                                       Announce = fish.Announce,
 
-                                      PhotoPreview = Convert.ToBase64String(fish.PhotoPreview)
-                                  }).Take(8).AsEnumerable().ToList();
+                                      PhotoPreview = fish.PhotoPreview
+                                  }).Take(9).AsEnumerable().ToList();
                     return View(_fish);
                 }
                 else
@@ -43,13 +43,13 @@ namespace Lovd.Controllers
                                  where (_fish.PhotoPreview != null)
                                  select new
                                  {
-                                     IdArticle = _fish.Id,
-                                     DateNews = _fish.Date,
+                                     Id = _fish.Id,
+                                     Date = _fish.Date,
                                      Title = _fish.Title,
                                      Announce = _fish.Announce,
 
-                                     PhotoPreview = Convert.ToBase64String(_fish.PhotoPreview)
-                                 }).Skip((page) * 8).Take(8).AsEnumerable().ToList();
+                                     PhotoPreview = _fish.PhotoPreview
+                                 }).Skip((page) * 9).Take(9).AsEnumerable().ToList();
                     return View(fish);
                 }
             }
@@ -76,6 +76,13 @@ namespace Lovd.Controllers
         public bool     FishExsist(int id)
         {
             return _context.KindOfFishes.Any(p => p.Id == id);
+        }
+        public IActionResult Search(string name)
+        {
+
+            IEnumerable<dynamic> Content =  _context.KindOfFishes.Where(l => l.Title.StartsWith(name)).ToList();
+        
+            return View("MainPage", Content);
         }
         public int FishCount()
         {

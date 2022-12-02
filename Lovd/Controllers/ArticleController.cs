@@ -26,10 +26,11 @@ namespace Lovd.Controllers
             _userManager = userManager;
         }
 
+
         // GET: News
         public async Task<IActionResult> MainPage(int page)
         {
-            if (Math.Ceiling((double)ArticlesCount() / 8) >= page)
+            if (Math.Ceiling((double)ArticlesCount() / 9) >= page)
             {
                 ViewBag.Count = ArticlesCount();
                 if (page == 0)
@@ -44,8 +45,8 @@ namespace Lovd.Controllers
                                         Announce = article.Announce,
                                         DisLikes = article.DisLikes ?? 0,
                                         Likes = article.Likes ?? 0,
-                                        PhotoPreview = Convert.ToBase64String(article.PhotoPreview)
-                                    }).Take(8).AsEnumerable().ToList();
+                                        PhotoPreview = article.PhotoPreview
+                                    }).Take(9).AsEnumerable().ToList();
                     return View(_Article);
                 }
                 else
@@ -60,8 +61,8 @@ namespace Lovd.Controllers
                                        Announce = article.Announce,
                                        DisLikes = article.DisLikes ?? 0,
                                        Likes = article.Likes ?? 0,
-                                       PhotoPreview = Convert.ToBase64String(article.PhotoPreview)
-                                   }).Skip((page) * 8).Take(8).AsEnumerable().ToList();
+                                       PhotoPreview = article.PhotoPreview
+                                   }).Skip((page) * 9).Take(9).AsEnumerable().ToList();
                     return View(Article);
                 }
             }
@@ -74,10 +75,10 @@ namespace Lovd.Controllers
             {
                 var articles = _context.Articles
                 .FirstOrDefault(n => n.IdArticle == id);
-                ViewBag.Likes= articles?.Likes ?? 0;
+                ViewBag.Likes = articles?.Likes ?? 0;
                 ViewBag.DisLikes = articles?.DisLikes ?? 0;
                 ViewBag.PageHtml = articles.ArticleHtml;
-                ViewBag.id= id.ToString();
+                ViewBag.id = id.ToString();
                 ArticleComments articleComments = new ArticleComments();
                 List<Comment> comment = new();
                 var commentsAll = _context.Comments.Include(n => n.User).Where(n => n.IdArticle == id);
@@ -85,7 +86,7 @@ namespace Lovd.Controllers
                 foreach (var item in commentsAll)
                 {
                     comment.Add(item);
-         
+
                 }
                 articleComments.comments = comment;
 
@@ -94,9 +95,11 @@ namespace Lovd.Controllers
             return RedirectToAction(nameof(MainPage));
 
         }
-        public async Task<IActionResult> Search() 
+        public IActionResult Search(string name)
         {
-            return View();
+            IEnumerable<dynamic> a = _context.Articles.Where(l => l.Title.StartsWith(name)).ToList();
+
+            return View("MainPage", a);
         }
         public async Task<IActionResult> CommentsCreatePartial([Bind("comment")] ModelsView.ArticleComments model)
         {
@@ -111,7 +114,7 @@ namespace Lovd.Controllers
 
             }
 
-           
+
             return PartialView();
         }
         public bool ArticlesExsist(int id)
@@ -122,6 +125,6 @@ namespace Lovd.Controllers
         {
             return _context.Articles.Count();
         }
-        private  string GetCurrentUserId() =>  _userManager.GetUserId(HttpContext.User);
+        private string GetCurrentUserId() => _userManager.GetUserId(HttpContext.User);
     }
 }

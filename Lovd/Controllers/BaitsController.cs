@@ -17,8 +17,14 @@ namespace Lovd.Controllers
         {
             _context = context;
         }
+        public IActionResult Search(string name)
+        {
 
+            IEnumerable<dynamic> a = _context.Baits.Where(l => l.Title.StartsWith(name)).ToList();
+
+            return View("MainPage", a);
+        }
         // GET: Baits
-     
+
     }
 }
