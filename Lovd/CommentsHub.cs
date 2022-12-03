@@ -70,7 +70,7 @@ namespace _3psp
                 if (userLike.Dislike == true || userLike.Like == true)
                 {
                     
-                    _context.LikesWithDislikes.Remove(userLike);
+                  _context.LikesWithDislikes.Remove(userLike);
                     await _context.SaveChangesAsync();
                     await Clients.Group(group).SendAsync("Likes", _context.Articles?.FirstOrDefault(n => n.IdArticle == articleId).Likes ?? 1);
                     return;
@@ -87,10 +87,10 @@ namespace _3psp
                 likesWithDislike.IdArticle = articleId;
                 likesWithDislike.UserId = _userManager.GetUserId(_httpContext.HttpContext.User);
                 likesWithDislike.Like = true;
-                _context.Add(likesWithDislike);
+               _context.Add(likesWithDislike);
                 await _context.SaveChangesAsync();
             }
-            await Clients.Group(group).SendAsync("Likes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).Likes??1);
+            await Clients.Group(group).SendAsync("Likes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).Likes??0);
 
         }
 
@@ -107,7 +107,7 @@ namespace _3psp
                 {
                     _context.LikesWithDislikes.Remove(userDisLike);
                     await _context.SaveChangesAsync();
-                    await Clients.Group(group).SendAsync("DisLikes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ?? 1);
+                    await Clients.Group(group).SendAsync("DisLikes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ?? 0);
                     return;
 
                 }
@@ -125,7 +125,7 @@ namespace _3psp
                 _context.Add(likesWithDislike);
                 await _context.SaveChangesAsync();
             }
-            await Clients.Group(group).SendAsync("DisLikes",_context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ?? 1);
+            await Clients.Group(group).SendAsync("DisLikes",_context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ??0);
 
         }
 

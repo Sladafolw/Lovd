@@ -268,6 +268,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Authorization/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -5577,6 +5593,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.xml",
         "microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.authentication.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/7.0.0": {
+      "sha512": "5gAaVbwSZ0T68adSu7hcPwfThqSjujFYRiNpi1XkGxhz26rLp/66QO93dSB9zlWTSmOJZWJUdIES9YSLR/cc8A==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.7.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authorization/2.2.0": {
@@ -13345,13 +13376,13 @@
     "net7.0": [
       "AjaxControlToolkit >= 20.1.0",
       "AjaxMin >= 5.14.5506.26202",
-      "AngleSharp >= 0.17.1",
       "BracketPipe >= 0.7.7087.41529",
       "HtmlAgilityPack >= 1.11.46",
       "HtmlSanitizer >= 8.0.601",
       "HtmlTags >= 8.1.1",
       "HtmlTags.AspNetCore >= 7.0.4",
       "MailKit >= 3.4.2",
+      "Microsoft.AspNetCore.Authentication.Google >= 7.0.0",
       "Microsoft.AspNetCore.Html.Abstractions >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.10",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.10",
@@ -13422,10 +13453,6 @@
             "target": "Package",
             "version": "[5.14.5506.26202, )"
           },
-          "AngleSharp": {
-            "target": "Package",
-            "version": "[0.17.1, )"
-          },
           "BracketPipe": {
             "target": "Package",
             "version": "[0.7.7087.41529, )"
@@ -13449,6 +13476,10 @@
           "MailKit": {
             "target": "Package",
             "version": "[3.4.2, )"
+          },
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[7.0.0, )"
           },
           "Microsoft.AspNetCore.Html.Abstractions": {
             "target": "Package",

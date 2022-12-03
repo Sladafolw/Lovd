@@ -21,9 +21,9 @@
                     <span asp-validation-for="comment"></span>
                     <div class="mar-top clearfix">
                         <button class="btn btn-sm btn-primary pull-right" id="sendBtn" type="submit"><i class="fa fa-pencil fa-fw"></i> Добавить</button>
-                        <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                        @*<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
                         <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
-                        <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
+                        <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>*@
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         hubConnection.logging = true;
         alert('ok');
         hubConnection.on("Likes", function (count) {
-            alert("RefreshWork");
+            alert("RefreshWork" + (count).toString());
             let Likes = document.getElementById("Likes");
             Likes.innerHTML = (count).toString();
         });

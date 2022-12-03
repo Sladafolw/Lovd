@@ -10,13 +10,13 @@
         "dependencies": {
           "AjaxControlToolkit": "20.1.0",
           "AjaxMin": "5.14.5506.26202",
-          "AngleSharp": "0.17.1",
           "BracketPipe": "0.7.7087.41529",
           "HtmlAgilityPack": "1.11.46",
           "HtmlSanitizer": "8.0.601",
           "HtmlTags": "8.1.1",
           "HtmlTags.AspNetCore": "7.0.4",
           "MailKit": "3.4.2",
+          "Microsoft.AspNetCore.Authentication.Google": "7.0.0",
           "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
           "Microsoft.AspNetCore.Identity.UI": "6.0.10",
@@ -209,6 +209,14 @@
           "Microsoft.AspNetCore.Authentication.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/7.0.0": {
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51819"
+          }
         }
       },
       "Microsoft.AspNetCore.Authorization/2.2.0": {
@@ -2995,6 +3003,13 @@
       "sha512": "sha512-XlVJzJ5wPOYW+Y0J6Q/LVTEyfS4ssLXmt60T0SPP+D8abVhBTl+cgw2gDHlyKYIkcJg7btMVh383NDkMVqD/fg==",
       "path": "microsoft.aspnetcore.authentication.core/2.2.0",
       "hashPath": "microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5gAaVbwSZ0T68adSu7hcPwfThqSjujFYRiNpi1XkGxhz26rLp/66QO93dSB9zlWTSmOJZWJUdIES9YSLR/cc8A==",
+      "path": "microsoft.aspnetcore.authentication.google/7.0.0",
+      "hashPath": "microsoft.aspnetcore.authentication.google.7.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization/2.2.0": {
       "type": "package",

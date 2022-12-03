@@ -53,10 +53,6 @@
               "target": "Package",
               "version": "[5.14.5506.26202, )"
             },
-            "AngleSharp": {
-              "target": "Package",
-              "version": "[0.17.1, )"
-            },
             "BracketPipe": {
               "target": "Package",
               "version": "[0.7.7087.41529, )"
@@ -80,6 +76,10 @@
             "MailKit": {
               "target": "Package",
               "version": "[3.4.2, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Microsoft.AspNetCore.Html.Abstractions": {
               "target": "Package",

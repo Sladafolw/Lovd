@@ -5,10 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Lovd</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Lovd.styles.css" asp-append-version="true" />
-    
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
 
 </head>
 <body>
@@ -31,14 +32,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li>   <pre>      </pre>  </li>
-                        <li class="nav-item"> <a class="nav-link  text-dark" asp-controller="Forum" asp-action="MainPage">Forum</a></li>
+                        <li class="nav-item"> <a class="nav-link  text-dark" asp-controller="Baits" asp-action="MainPage">Прикормки</a></li>
                         <li>   <pre>      </pre>  </li>
                         <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Article" asp-route-page="0" asp-action="MainPage">Статьи</a></li>
-                        @if (User.IsInRole("admin"))
-                        {
+                        @*@if (User.IsInRole("admin"))
+                        {*@
                             <li>   <pre>      </pre>  </li>
 
-                            <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>}
+                            <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>@*}*@
                             <li>   <pre>      </pre>  </li>
                             <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Lures" asp-route-page="0" asp-action="MainPage">Приманки</a></li>
                             <li>   <pre>      </pre>  </li>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<dynamic>
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <title>Bootstrap 4 Card (с шапкой)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="/examples/vendors/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+
+    </div>
+    <div class="container">
+        <form asp-action="Search" asp-controller="Baits" style="text-align:right; ">
+            <input type="text" name="name" />
+            <button type="submit">Искать</button>
+        </form>
+        <h1 class="h4 text-center my-5"> Виды рыб</h1>
+
+        <div class="row">
+            @foreach (var a in Model.Take(9))
+            {@*@Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                               + Convert.ToBase64String(a.PhotoPreview ?? 3) + "\" />")*@
+            <div class="col-md-6">
+                <!-- Карточка, в которой в качестве элемента шапки используется div -->
+                <div class="card mx-auto mb-4" style="max-width: 300px;min-height: 480px;max-height: 480px;">
+                    <!-- Шапка -->
+                    <div class="card-header">
+                        @a.Title
+                    </div>
+                    <!-- Текстовый контент -->
+                    <div class="card-body">
+                        <div class="myDivCover">
+                            @{
+                            var af = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(@a.PhotoPreview));
+                            <img object-fit="cover" class="myImg" src="@af" alt="im faded">
+                            }
+                        </div>
+                        <h4 class="card-title">@a.Date </h4>
+                        <p class="card-text">@a.Announce</p>
+                    </div>
+                    <div>
+                        <button style="border:0;" id="likebtn"><i class="fa fa-thumbs-up"></i></button>
+                        <button style="border:0;" id="dislikebtn"><i class="fa fa-thumbs-down"></i></button>
+                    </div>
+                    <a asp-controller="Baits" asp-action="DifferentsBaits" style="color:green;text-align:center; width:100%;" asp-route-id="@a.Id">Перейти</a>
+                </div><!-- Конец карточки -->
+            </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

@@ -6,12 +6,13 @@
     <UserSecretsId>2ab078cf-3c20-4b46-9b05-f0b459d09ae3</UserSecretsId>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
+    <StartupObject></StartupObject>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AjaxControlToolkit" Version="20.1.0" />
     <PackageReference Include="AjaxMin" Version="5.14.5506.26202" />
-    <PackageReference Include="AngleSharp" Version="0.17.1" />
     <PackageReference Include="BracketPipe" Version="0.7.7087.41529" />
     <PackageReference Include="ckeditor-full" Version="4.20.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
@@ -20,6 +21,7 @@
     <PackageReference Include="HtmlTags.AspNetCore" Version="7.0.4" />
     <PackageReference Include="jQuery.Validation" Version="1.19.5" />
     <PackageReference Include="MailKit" Version="3.4.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
