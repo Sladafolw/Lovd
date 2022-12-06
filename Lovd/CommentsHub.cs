@@ -72,7 +72,16 @@ namespace _3psp
                     
                   _context.LikesWithDislikes.Remove(userLike);
                     await _context.SaveChangesAsync();
-                    await Clients.Group(group).SendAsync("Likes", _context.Articles?.FirstOrDefault(n => n.IdArticle == articleId).Likes ?? 1);
+                   int counts=_context.Articles?.FirstOrDefault(n => n.IdArticle == articleId).Likes ?? 0;
+                    var al = from ass in _context.Articles
+                            where (ass.IdArticle == articleId)
+                            select new
+                            {
+                                Likes = ass.Likes??0
+
+
+                            };
+                    await Clients.Group(group).SendAsync("Likes",al.FirstOrDefault().Likes);
                     return;
 
                 }
@@ -90,7 +99,16 @@ namespace _3psp
                _context.Add(likesWithDislike);
                 await _context.SaveChangesAsync();
             }
-            await Clients.Group(group).SendAsync("Likes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).Likes??0);
+            var a = from ass in _context.Articles
+                    where (ass.IdArticle == articleId)
+                    select new
+                    {
+                        Likes = ass.Likes??0
+
+
+                    };
+
+            await Clients.Group(group).SendAsync("Likes", a.FirstOrDefault().Likes) ;
 
         }
 
@@ -107,7 +125,15 @@ namespace _3psp
                 {
                     _context.LikesWithDislikes.Remove(userDisLike);
                     await _context.SaveChangesAsync();
-                    await Clients.Group(group).SendAsync("DisLikes", _context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ?? 0);
+                    var al = from ass in _context.Articles
+                             where (ass.IdArticle == articleId)
+                             select new
+                             {
+                                 DisLikes = ass.DisLikes ?? 0
+
+
+                             };
+                    await Clients.Group(group).SendAsync("DisLikes",al.FirstOrDefault().DisLikes );
                     return;
 
                 }
@@ -125,7 +151,15 @@ namespace _3psp
                 _context.Add(likesWithDislike);
                 await _context.SaveChangesAsync();
             }
-            await Clients.Group(group).SendAsync("DisLikes",_context.Articles.FirstOrDefault(n => n.IdArticle == articleId).DisLikes ??0);
+            var a = from ass in _context.Articles
+                     where (ass.IdArticle == articleId)
+                     select new
+                     {
+                         DisLikes = ass.DisLikes ?? 0
+
+
+                     };
+            await Clients.Group(group).SendAsync("DisLikes", a.FirstOrDefault().DisLikes);
 
         }
 

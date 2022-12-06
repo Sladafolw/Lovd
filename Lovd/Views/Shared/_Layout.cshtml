@@ -35,11 +35,11 @@
                         <li class="nav-item"> <a class="nav-link  text-dark" asp-controller="Baits" asp-action="MainPage">Прикормки</a></li>
                         <li>   <pre>      </pre>  </li>
                         <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Article" asp-route-page="0" asp-action="MainPage">Статьи</a></li>
-                        @*@if (User.IsInRole("admin"))
-                        {*@
+                        @if (User.IsInRole("Admin"))
+                        {
                             <li>   <pre>      </pre>  </li>
 
-                            <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>@*}*@
+                            <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a></li>}
                             <li>   <pre>      </pre>  </li>
                             <li class="nav-item"> <a class="nav-link text-dark" asp-controller="Lures" asp-route-page="0" asp-action="MainPage">Приманки</a></li>
                             <li>   <pre>      </pre>  </li>

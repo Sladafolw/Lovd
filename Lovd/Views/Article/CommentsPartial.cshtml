@@ -126,7 +126,6 @@
                                 {
                                     foreach (var comment in Model.comments)
                                     {
-
                                         <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя" src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a>
                                         <div class="media-body">
 
@@ -135,16 +134,17 @@
                                                     <a href="#" class="btn-link text-semibold media-heading box-inline">@Html.Raw(comment.User.UserName)</a>
                                                     <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - @Html.Raw(comment.CreatedDate);</p>
                                                 </div>
-                                                <p>@Html.Raw(comment.Text);</p>
+                                                <div>@Html.Raw(comment.Text);</div>
                                                 <div post-id='@comment.IdArticle' comment-id='@comment.IdComments' class="pad-ver">
-                                                   @if (User.IsInRole("admin")) {<a  class="delete" >delete</a>}
-                                                    @*<a class="test" style="text-decoration:none">Ответить</a>*@
+                                                    @if (User.IsInRole("admin"))
+                                                    {<a class="delete">delete</a>}
+                                                    <a class="test" style="text-decoration:none">Ответить</a>
                                                 </div>
-                                               
+
                                             </div>
 
                                         </div>
-                                        
+
                                     }
                                 }
                             }
