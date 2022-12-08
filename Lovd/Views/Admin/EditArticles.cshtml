@@ -1,4 +1,4 @@
-﻿@model Lovd.Models.Article
+﻿@model IEnumerable<dynamic>
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,52 +10,61 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EditArticles">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdArticle" />
-            <div class="form-group">
-                <label asp-for="ArticleHtml" class="control-label"></label>
-                <textarea class="textarea" asp-for="ArticleHtml" class="form-control" > </textarea>
-                <span asp-validation-for="ArticleHtml" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Likes" class="control-label"></label>
-                <input asp-for="Likes" class="form-control" />
-                <span asp-validation-for="Likes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DisLikes" class="control-label"></label>
-                <input asp-for="DisLikes" class="form-control" />
-                <span asp-validation-for="DisLikes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <input asp-for="UserId" type="hidden" class="form-control"/>
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateNews" class="control-label"></label>
-                <input asp-for="DateNews" class="form-control" />
-                <span asp-validation-for="DateNews" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Announce" class="control-label"></label>
-                <input asp-for="Announce" class="form-control" />
-                <span asp-validation-for="Announce" class="text-danger"></span>
-            </div>
+        <form  enctype="multipart/form-data" asp-action="EditArticles">
+            @{ foreach (var a in Model)
+                {
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" value="@a.IdArticle" name="IdArticle" />
+                    <div class="form-group">
 
-               <div class="form-group">
-                <label text="PhotoPreview" class="control-label"></label>
-                <input  type="file"    required name="PhotoPreview"  class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+                        <textarea class="textarea" name="ArticleHtml">@a.ArticleHtml </textarea>
+
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.Likes" name="Likes" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.DisLikes" name="DisLikes" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.UserId" type="hidden" name="UserId" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.DateNews" name="DateNews" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.Title" name="Title" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.Announce" name="Announce" class="form-control" />
+
+                    </div>
+
+                    <div class="myDivCover">
+                        @*@{
+                            var af = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(@a.PhotoPreview));
+                            <img object-fit="cover" class="myImg" src="@af" alt="im faded">
+                        }*@
+                    </div>
+                    <div>Хотите новую картинку? </div>
+                    <div class="form-group">
+                        <input type="file" name="Photo">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>} }
         </form>
     </div>
 </div>
@@ -63,17 +72,9 @@
 <div>
     <a asp-action="IndexArticles">Back to List</a>
 </div>
-@section Scripts {    <script>
-        tinymce.init({
-          selector: 'textarea',
-          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect',
-          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-          tinycomments_mode: 'embedded',
-          tinycomments_author: 'Author name',
-          mergetags_list: [
-            { value: 'First.Name', title: 'First Name' },
-            { value: 'Email', title: 'Email' },
-          ]
-        });
-         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    </script>}
+<style>
+    .textarea {
+        width: 100%
+    }
+</style>
+

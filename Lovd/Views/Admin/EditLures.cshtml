@@ -1,4 +1,4 @@
-﻿@model Lovd.Models.Lure
+﻿@model IEnumerable<dynamic>
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,41 +6,53 @@
 
 <h1>Edit</h1>
 
-<h4>Lure</h4>
+<h4>KindOfFish</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="LuresHtml" class="control-label"></label>
-                <input asp-for="LuresHtml" class="form-control" />
-                <span asp-validation-for="LuresHtml" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Announce" class="control-label"></label>
-                <input asp-for="Announce" class="form-control" />
-                <span asp-validation-for="Announce" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhotoPreview" class="control-label"></label>
-                <input asp-for="PhotoPreview" class="form-control" />
-                <span asp-validation-for="PhotoPreview" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+        <form enctype="multipart/form-data" asp-action="EditLures">
+
+            @{ foreach (var a in Model)
+                {
+
+
+
+                        <div class="form-group">
+                                        <textarea class="textarea"  name="LuresHtml">@a.LuresHtml </textarea>
+                            @*<input value="@a.LuresHtml" name="LuresHtml" class="form-control" />*@
+                            <input type="hidden" value="@a.Id" name="Id" />
+                        </div>
+                    <div class="form-group">
+
+                        <input value="@a.Date" name="Date" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+                        <div class="myDivCover">
+                            @{
+                                var af = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(@a.PhotoPreview));
+                                <img object-fit="cover" class="myImg" src="@af" alt="im faded">
+                            }
+                        </div>
+                        <div>Хотите новую картинку? </div>
+                        <div class="form-group">
+                            <input type="file" name="Photo">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.Title" name="Title" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+
+                        <input value="@a.Announce" name="Announce" class="form-control" />
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>} }
         </form>
     </div>
 </div>
@@ -48,4 +60,8 @@
 <div>
     <a asp-action="IndexLures">Back to List</a>
 </div>
-
+<style>
+    .textarea {
+        width: 100%
+    }
+</style>

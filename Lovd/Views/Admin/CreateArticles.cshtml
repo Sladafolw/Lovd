@@ -5,7 +5,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<script src="https://cdn.tiny.cloud/1/ap4rci5uvk3ruwzosrfr9friay43isejq0b038pibul3tjr1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/ci3cevswjuebv124xmpoh2sdczh0bs95f0mvj52kiwnzyn4g/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 <h1>
     Create
@@ -19,7 +19,6 @@
         <form enctype="multipart/form-data" asp-controller="Admin" asp-action="CreateArticles">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ArticleHtml" class="control-label"></label>
                 <textarea asp-for="ArticleHtml" class="textarea"></textarea>
                 <span asp-validation-for="ArticleHtml" class="text-danger"></span>
             </div>

@@ -1,6 +1,7 @@
 ﻿
 using Lovd.Data;
 using Lovd.Models;
+using Lovd.ModelsView;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace Lovd.Controllers
 {
@@ -146,7 +148,20 @@ namespace Lovd.Controllers
                 return NotFound();
             }
 
-            var article = await _context.Articles.FindAsync(id);
+            var article = (from _article in _context.Articles
+                           where ( _article.IdArticle == id)
+                           select new
+                           {
+                               IdArticle=_article.IdArticle,
+                               UserId = _article.UserId,
+                               DateNews = _article.DateNews,
+                               Title = _article.Title,
+                               Announce = _article.Announce,
+                               Likes = _article.Likes,
+                               DisLikes = _article.DisLikes,
+                               ArticleHtml = _article.ArticleHtml,
+                               PhotoPreview = _article.PhotoPreview
+                           }).AsEnumerable().ToList();
             if (article == null)
             {
                 return NotFound();
@@ -160,13 +175,35 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditArticles(int id, [Bind("IdArticle,ArticleHtml,Likes,DisLikes,UserId,DateNews,Title,PhotoPreview,Announce")] Article articles)
+        public async Task<IActionResult> EditArticles(int id, [Bind("IdArticle,ArticleHtml,Likes,DisLikes,UserId,DateNews,Title,Photo,PhotoPreview,Announce")] ArticleView articles)
         {
-            if (id != articles.IdArticle)
+            
+            if (articles.Photo == null)
             {
-                return NotFound();
-            }
+                var photo = (from fish in _context.Articles
+                             where (fish.PhotoPreview != null && fish.IdArticle == articles.IdArticle)
+                             select new
+                             {
+                                 photoB = fish.PhotoPreview
+                             });
+                foreach (var a in photo)
+                {
+                    articles.PhotoPreview = a.photoB;
 
+                }
+
+
+            }
+            else
+            {
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(articles.Photo.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)articles.Photo.Length);
+                }
+                articles.PhotoPreview = imageData;
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -302,7 +339,17 @@ namespace Lovd.Controllers
                 return NotFound();
             }
 
-            var bait = await _context.Baits.FindAsync(id);
+            var bait = (from _Baits in _context.Baits
+                        where (_Baits.PhotoPreview != null && _Baits.Id == id)
+                        select new
+                        {
+                            Id = _Baits.Id,
+                            Date = _Baits.Date,
+                            Title = _Baits.Title,
+                            Announce = _Baits.Announce,
+                            BaitsHtml = _Baits.BaitsHtml,
+                            PhotoPreview = _Baits.PhotoPreview
+                        }).AsEnumerable().ToList();
             if (bait == null)
             {
                 return NotFound();
@@ -315,11 +362,38 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditBaits(int id, [Bind("Id,BaitsHtml,Date,PhotoPreview,Title,Announce")] Bait bait)
+        public async Task<IActionResult> EditBaits(int id, [Bind("Id,BaitsHtml,Date,Photo,Title,Announce")] BaitView bait)
         {
             if (id != bait.Id)
             {
                 return NotFound();
+            }
+            if (bait.Photo == null)
+            {
+                var photo = (from baits in _context.Baits
+                             where (baits.PhotoPreview != null && baits.Id == id)
+                             select new
+                             {
+                                 photoB = baits.PhotoPreview
+                             });
+                foreach (var a in photo)
+                {
+                    bait.PhotoPreview = a.photoB;
+
+
+                }
+
+
+            }
+            else
+            {
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(bait.Photo.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)bait.Photo.Length);
+                }
+                bait.PhotoPreview = imageData;
             }
 
             if (ModelState.IsValid)
@@ -450,7 +524,19 @@ namespace Lovd.Controllers
                 return NotFound();
             }
 
-            var kindOfFish = await _context.KindOfFishes.FindAsync(id);
+            var kindOfFish =  (from fish in _context.KindOfFishes
+                                    where (fish.PhotoPreview != null && fish.Id==id)
+                                    select new
+                                    {
+                                        Id = fish.Id,
+                                        Date = fish.Date,
+                                        Title = fish.Title,
+                                        Announce = fish.Announce,
+                                        KindOfFishHtml= fish.KindOfFishHtml,
+
+                                        PhotoPreview = fish.PhotoPreview
+                                    }).AsEnumerable().ToList();
+          
             if (kindOfFish == null)
             {
                 return NotFound();
@@ -463,18 +549,48 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditFish(int id, [Bind("Id,KindOfFishHtml,Date,PhotoPreview,Title,Announce")] KindOfFish kindOfFish)
+        public async Task<IActionResult> EditFish(int id, [Bind("Id,KindOfFishHtml,Date,Title,Announce,Photo")] KindView kindOfFish)
         {
             if (id != kindOfFish.Id)
             {
                 return NotFound();
             }
+         
+            if (kindOfFish.Photo == null)
+            {
+                var photo = (from fish in _context.KindOfFishes
+                             where (fish.PhotoPreview != null && fish.Id == id)
+                             select new
+                             {
+                                 photoB = fish.PhotoPreview
+                             });
+                foreach (var a in photo)
+                {
+                    kindOfFish.PhotoPreview = a.photoB;
+                   
 
+                }
+
+
+            }
+            else
+            {
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(kindOfFish.Photo.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)kindOfFish.Photo.Length);
+                }
+                kindOfFish.PhotoPreview=imageData;
+
+              
+
+            }
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(kindOfFish);
+                    _context.KindOfFishes.Update(kindOfFish);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -595,7 +711,19 @@ namespace Lovd.Controllers
                 return NotFound();
             }
 
-            var lure = await _context.Lures.FindAsync(id);
+            var lure =
+              (from Lure in _context.Lures
+                              where (Lure.PhotoPreview != null && Lure.Id == id)
+                              select new
+                              {
+                                  Id = Lure.Id,
+                                  Date = Lure.Date,
+                                  Title = Lure.Title,
+                                  Announce = Lure.Announce,
+                                  LuresHtml = Lure.LuresHtml,
+
+                                  PhotoPreview = Lure.PhotoPreview
+                              }).AsEnumerable().ToList();
             if (lure == null)
             {
                 return NotFound();
@@ -608,14 +736,42 @@ namespace Lovd.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditLures(int id, [Bind("Id,LuresHtml,Date,Title,Announce,PhotoPreview")] Lure lure)
+        public async Task<IActionResult> EditLures(int id, [Bind("Id,LuresHtml,Date,Title,Announce,Photo")] LuresView lure)
         {
             if (id != lure.Id)
             {
                 return NotFound();
             }
+            if (lure.Photo == null)
+            {
+                var photo = (from fish in _context.Lures
+                             where (fish.PhotoPreview != null && fish.Id == id)
+                             select new
+                             {
+                                 photoB = fish.PhotoPreview
+                             });
+                foreach (var a in photo)
+                {
+                    lure.PhotoPreview = a.photoB;
 
-            if (ModelState.IsValid)
+
+                }
+
+
+            }
+            else
+            {
+                byte[] imageData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(lure.Photo.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)lure.Photo.Length);
+                }
+                lure.PhotoPreview = imageData;
+            }
+
+
+                if (ModelState.IsValid)
             {
                 try
                 {
@@ -633,7 +789,7 @@ namespace Lovd.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexLures));
             }
             return View(lure);
         }

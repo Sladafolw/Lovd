@@ -9,10 +9,11 @@
 <p>
     <a asp-action="CreateArticles">Create New</a>
 </p>
+<div class="polygon">
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th >
                 @Html.DisplayNameFor(model => model.ArticleHtml)
             </th>
             <th>
@@ -42,7 +43,7 @@
 @foreach (var item in Model)
 {
         <tr>
-            <td>
+            <td class="html" style="max-width:500px;">
                 @Html.DisplayFor(modelItem => item.ArticleHtml)
             </td>
             <td>
@@ -52,9 +53,9 @@
                 @Html.DisplayFor(modelItem => item.DisLikes)
             </td>
             <td>
-                @{
+                @*@{
                     <img object-fit="cover" class="myImg" src="@String.Format("data:image/gif;base64,{0}",Convert.ToBase64String(item.PhotoPreview))" alt="im faded">
-                    }
+                    }*@
 <td>
                 @Html.DisplayFor(modelItem => item.DateNews)
             </td>
@@ -76,3 +77,8 @@
 }
     </tbody>
 </table>
+    </div>
+<style>    .polygon {
+        max-width: 300px;
+    }
+</style>
