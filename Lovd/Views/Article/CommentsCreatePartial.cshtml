@@ -51,15 +51,18 @@
         }, 3050);
 
         hubConnection.logging = true;
-        alert('ok');
-        hubConnection.on("Likes", function (count) {
-            alert("RefreshWork" + (count).toString());
+        hubConnection.on("Likes", function (count,countD) {
+           
             let Likes = document.getElementById("Likes");
             Likes.innerHTML = (count).toString();
-        });
-        hubConnection.on("DisLikes", function (count) {
-            alert("RefreshWork");
             let DisLikes = document.getElementById("Dislikes");
+            DisLikes.textContent = (countD).toString();
+        });
+        hubConnection.on("DisLikes", function (count,countD) {
+         
+            let DisLikes = document.getElementById("Dislikes");
+            let Likes = document.getElementById("Likes");
+            Likes.innerHTML = (countD).toString();
             DisLikes.textContent = (count).toString();
         });
         // получение сообщения от сервера

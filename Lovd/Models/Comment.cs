@@ -13,7 +13,7 @@ namespace Lovd.Models
         public DateTime? EditDate { get; set; }
         public string UserId { get; set; } = null!;
 
-        public virtual Article IdArticleNavigation { get; set; } = null!;
-        public virtual AspNetUser User { get; set; } = null!;
+        public virtual Article ?IdArticleNavigation { get; set; } = null!;
+        public virtual AspNetUser? User { get; set; } = null!;
     }
 }

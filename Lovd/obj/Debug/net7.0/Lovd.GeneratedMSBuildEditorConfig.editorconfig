@@ -212,6 +212,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlQmFpdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DeleteComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlQ29tbWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DeleteFish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlRmlzaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -226,6 +230,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DetailsBaits.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc0JhaXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DetailsComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc0NvbW1lbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DetailsFish.cshtml]
@@ -244,6 +252,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJhaXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/EditComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdENvbW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/EditFish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEZpc2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -258,6 +270,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/IndexBaits.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhCYWl0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/IndexComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhDb21tZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/IndexFish.cshtml]

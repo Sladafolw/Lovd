@@ -886,10 +886,7 @@ namespace Lovd.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditComments(int id, [Bind("IdArticle,Text,IdComments,ReplyId,CreatedDate,EditDate,UserId")] Comment comment)
         {
-            if (id != comment.IdComments)
-            {
-                return NotFound();
-            }
+           
 
             if (ModelState.IsValid)
             {
@@ -909,7 +906,7 @@ namespace Lovd.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexComments));
             }
             ViewData["IdArticle"] = new SelectList(_context.Articles, "IdArticle", "IdArticle", comment.IdArticle);
             ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", comment.UserId);
@@ -939,25 +936,25 @@ namespace Lovd.Controllers
         // POST: Comments/Delete/5
         [HttpPost, ActionName("DeleteComments")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteComments(int id)
+        public async Task<IActionResult> DeleteComments(int IdComments)
         {
             if (_context.Comments == null)
             {
                 return Problem("Entity set 'LoveContext.Comments'  is null.");
             }
-            var comment = await _context.Comments.FindAsync(id);
+            var comment = await _context.Comments.FindAsync(IdComments);
             if (comment != null)
             {
                 _context.Comments.Remove(comment);
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexComments));
         }
 
-        private bool CommentExists(int id)
+        private bool CommentExists(int IdComments)
         {
-            return (_context.Comments?.Any(e => e.IdComments == id)).GetValueOrDefault();
+            return (_context.Comments?.Any(e => e.IdComments == IdComments)).GetValueOrDefault();
         }
     }
 

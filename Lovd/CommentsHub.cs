@@ -65,7 +65,14 @@ namespace _3psp
             if (GroupNameExsist(group) && userLike != null)
             {
 
+                var alsm = from ass in _context.Articles
+                         where (ass.IdArticle == articleId)
+                         select new
+                         {
+                             DisLikes = ass.DisLikes ?? 0
 
+
+                         };
                 if (userLike.Dislike == true || userLike.Like == true)
                 {
                     
@@ -80,7 +87,7 @@ namespace _3psp
 
 
                             };
-                    await Clients.Group(group).SendAsync("Likes",al.FirstOrDefault().Likes);
+                    await Clients.Group(group).SendAsync("Likes",al.FirstOrDefault().Likes,alsm.FirstOrDefault().DisLikes);
                     return;
 
                 }
@@ -105,9 +112,16 @@ namespace _3psp
                         Likes = ass.Likes??0
 
 
-                    };
+                    }; var als = from ass in _context.Articles
+                                 where (ass.IdArticle == articleId)
+                                 select new
+                                 {
+                                     DisLikes = ass.DisLikes ?? 0
 
-            await Clients.Group(group).SendAsync("Likes", a.FirstOrDefault().Likes) ;
+
+                                 };
+
+            await Clients.Group(group).SendAsync("Likes", a.FirstOrDefault().Likes, als.FirstOrDefault().DisLikes) ;
 
         }
 
@@ -119,7 +133,14 @@ namespace _3psp
             if (GroupNameExsist(group) && userDisLike != null)
             {
 
+                var ab = from ass in _context.Articles
+                        where (ass.IdArticle == articleId)
+                        select new
+                        {
+                            Likes = ass.Likes ?? 0
 
+
+                        };
                 if (userDisLike.Dislike == true|| userDisLike.Like==true)
                 {
                     _context.LikesWithDislikes.Remove(userDisLike);
@@ -132,7 +153,7 @@ namespace _3psp
 
 
                              };
-                    await Clients.Group(group).SendAsync("DisLikes",al.FirstOrDefault().DisLikes );
+                    await Clients.Group(group).SendAsync("DisLikes",al.FirstOrDefault().DisLikes,ab.FirstOrDefault().Likes );
                     return;
 
                 }
@@ -157,8 +178,15 @@ namespace _3psp
                          DisLikes = ass.DisLikes ?? 0
 
 
-                     };
-            await Clients.Group(group).SendAsync("DisLikes", a.FirstOrDefault().DisLikes);
+                     }; var abm = from ass in _context.Articles
+                                 where (ass.IdArticle == articleId)
+                                 select new
+                                 {
+                                     Likes = ass.Likes ?? 0
+
+
+                                 };
+            await Clients.Group(group).SendAsync("DisLikes", a.FirstOrDefault().DisLikes, abm.FirstOrDefault().Likes);
 
         }
 

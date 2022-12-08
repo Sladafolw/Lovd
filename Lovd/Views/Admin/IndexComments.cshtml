@@ -50,9 +50,9 @@
                 @Html.DisplayFor(modelItem => item.User.Id)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdComments">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdComments">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdComments">Delete</a>
+                <a asp-action="EditComments" asp-route-id="@item.IdComments">Edit</a> |
+                <a asp-action="DetailsComments" asp-route-id="@item.IdComments">Details</a> |
+                <a asp-action="DeleteComments" asp-route-id="@item.IdComments">Delete</a>
             </td>
         </tr>
 }
