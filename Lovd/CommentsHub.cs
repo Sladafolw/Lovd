@@ -1,5 +1,4 @@
 ﻿using Lovd.Models;
-using Microsoft.Ajax.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;

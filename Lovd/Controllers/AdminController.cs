@@ -835,6 +835,130 @@ namespace Lovd.Controllers
         {
             return _context.Lures.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> IndexComments()
+        {
+            var loveContext = _context.Comments.Include(c => c.IdArticleNavigation).Include(c => c.User);
+            return View(await loveContext.ToListAsync());
+        }
+
+        // GET: Comments/Details/5
+        public async Task<IActionResult> DetailsComments(int? id)
+        {
+            if (id == null || _context.Comments == null)
+            {
+                return NotFound();
+            }
+
+            var comment = await _context.Comments
+                .Include(c => c.IdArticleNavigation)
+                .Include(c => c.User)
+                .FirstOrDefaultAsync(m => m.IdComments == id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            return View(comment);
+        }
+
+        // GET: Comments/Edit/5
+        public async Task<IActionResult> EditComments(int? id)
+        {
+            if (id == null || _context.Comments == null)
+            {
+                return NotFound();
+            }
+
+            var comment = await _context.Comments.FindAsync(id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+            ViewData["IdArticle"] = new SelectList(_context.Articles, "IdArticle", "IdArticle", comment.IdArticle);
+            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", comment.UserId);
+            return View(comment);
+        }
+
+        // POST: Comments/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditComments(int id, [Bind("IdArticle,Text,IdComments,ReplyId,CreatedDate,EditDate,UserId")] Comment comment)
+        {
+            if (id != comment.IdComments)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(comment);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CommentExists(comment.IdComments))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["IdArticle"] = new SelectList(_context.Articles, "IdArticle", "IdArticle", comment.IdArticle);
+            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", comment.UserId);
+            return View(comment);
+        }
+
+        // GET: Comments/Delete/5
+        public async Task<IActionResult> DeleteComments(int? id)
+        {
+            if (id == null || _context.Comments == null)
+            {
+                return NotFound();
+            }
+
+            var comment = await _context.Comments
+                .Include(c => c.IdArticleNavigation)
+                .Include(c => c.User)
+                .FirstOrDefaultAsync(m => m.IdComments == id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            return View(comment);
+        }
+
+        // POST: Comments/Delete/5
+        [HttpPost, ActionName("DeleteComments")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteComments(int id)
+        {
+            if (_context.Comments == null)
+            {
+                return Problem("Entity set 'LoveContext.Comments'  is null.");
+            }
+            var comment = await _context.Comments.FindAsync(id);
+            if (comment != null)
+            {
+                _context.Comments.Remove(comment);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool CommentExists(int id)
+        {
+            return (_context.Comments?.Any(e => e.IdComments == id)).GetValueOrDefault();
+        }
     }
 
 }
