@@ -81,8 +81,8 @@ namespace Lovd.Controllers
                 ViewBag.id = id.ToString();
                 ArticleComments articleComments = new ArticleComments();
                 List<Comment> comment = new();
-                var commentsAll = _context.Comments.Include(n => n.User).Where(n => n.IdArticle == id);
-                ;
+                var commentsAll = _context.Comments.Include(n => n.User).Where(n => n.IdArticle == id).OrderBy(n=>n.CreatedDate);
+                
                 foreach (var item in commentsAll)
                 {
                     comment.Add(item);

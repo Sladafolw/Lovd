@@ -136,9 +136,9 @@
                                                 </div>
                                                 <div>@Html.Raw(comment.Text);</div>
                                                 <div post-id='@comment.IdArticle' comment-id='@comment.IdComments' class="pad-ver">
-                                                    @if (User.IsInRole("admin"))
+                                                    @if (User.IsInRole("Admin"))
                                                     {<a class="delete">delete</a>}
-                                                    <a class="test" style="text-decoration:none">Ответить</a>
+                                                    @*<a class="test" style="text-decoration:none">Ответить</a>*@
                                                 </div>
 
                                             </div>

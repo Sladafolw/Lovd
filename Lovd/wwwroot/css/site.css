@@ -28,3 +28,98 @@ body {
     height: 130px;
     border: 1px solid Red;
 }
+/*:root {
+  --var-bgcolor: #fff;
+  --var-fontcolor: #000;
+}
+
+[dark] {
+    --var-bgcolor: #333;
+    --var-fontcolor: #0116ff;
+}
+
+body {
+  background-color: var(--var-bgcolor);
+  color: var(--var-fontcolor);
+}*/
+:root {
+    --var-bgcolor: #ffffff;
+    --var-fontcolor: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --var-bgcolor: #333;
+        --var-fontcolor: #0116ff;
+    }
+
+}
+
+body {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;}
+
+nav {
+    box-shadow: none !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    border: none !important;
+    border-top: none !important;
+    
+    box-shadow: none !important;
+}
+
+.container-fluid {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
+header {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    border: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+}
+
+button {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
+input {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
+
+
+
+
+div {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
+textarea {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
+li {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
+.nav-item {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
+ul {
+    background-color: var(--var-bgcolor) !important;
+    color: var(--var-fontcolor) !important;
+}
+
