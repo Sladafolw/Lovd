@@ -1,10 +1,11 @@
 ﻿
-using Lovd.Data;
+
 using Lovd.Models;
 using Lovd.ModelsView;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -27,11 +28,21 @@ namespace Lovd.Controllers
 
 
         }
+        [HttpGet]
+        public IActionResult SetUserRole()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult AllUserWithRoles()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<ActionResult>  UserFind(string name)
         {
-            PartialView("AllUserWithRoles", "namw");
+            PartialView("AllUserWithRoles", name);
             return View("SetUserRole");
         }
         [HttpPost]
@@ -54,6 +65,7 @@ namespace Lovd.Controllers
 
         [HttpGet]
         //[Authorize(Roles = "Admin")]
+        [HttpGet]
         public async Task<ActionResult> CreateRole()
         { return View(); }
 
@@ -110,7 +122,7 @@ namespace Lovd.Controllers
         public IActionResult CreateArticles()
         {
             ViewBag.userId = _userManager.GetUserId(HttpContext.User);
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_userManager.Users, "Id", "Id");
             return View();
         }
 
@@ -136,7 +148,7 @@ namespace Lovd.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexArticles));
             }
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", article.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", article.UserId);
             return RedirectToAction("IndexArticles");
         }
 
@@ -224,7 +236,7 @@ namespace Lovd.Controllers
                 }
                 return RedirectToAction(nameof(IndexArticles));
             }
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", articles.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", articles.UserId);
             return View(articles);
         }
 
@@ -292,10 +304,7 @@ namespace Lovd.Controllers
 
             return View(bait);
         }
-        public IActionResult SetUserRole()
-        {
-            return View();
-        }
+      
 
         // GET: Baits/Create
         public IActionResult CreateBaits()
@@ -875,7 +884,7 @@ namespace Lovd.Controllers
                 return NotFound();
             }
             ViewData["IdArticle"] = new SelectList(_context.Articles, "IdArticle", "IdArticle", comment.IdArticle);
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", comment.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", comment.UserId);
             return View(comment);
         }
 
@@ -909,7 +918,7 @@ namespace Lovd.Controllers
                 return RedirectToAction(nameof(IndexComments));
             }
             ViewData["IdArticle"] = new SelectList(_context.Articles, "IdArticle", "IdArticle", comment.IdArticle);
-            ViewData["UserId"] = new SelectList(_context.AspNetUsers, "Id", "Id", comment.UserId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", comment.UserId);
             return View(comment);
         }
 

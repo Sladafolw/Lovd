@@ -292,3 +292,4 @@ C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net7.0\refint\Lovd.dll
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net7.0\Lovd.pdb
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net7.0\Lovd.genruntimeconfig.cache
 C:\Users\slava\source\repos\Lovd\Lovd\obj\Debug\net7.0\ref\Lovd.dll
+C:\Users\slava\source\repos\Lovd\Lovd\bin\Debug\net7.0\System.Reflection.MetadataLoadContext.dll

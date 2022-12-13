@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Lovd.Data;
 using Lovd.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Lovd.Models;
@@ -8,14 +7,11 @@ using _3psp;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("LovdContextConnection") ?? throw new InvalidOperationException("Connection string 'LovdContextConnection' not found.");
-
-builder.Services.AddDbContext<LovdContext>(options =>
-    options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<LoveContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDefaultIdentity<IdentityUser>
     (options => options.SignIn.RequireConfirmedAccount = true
-    ).AddRoles<IdentityRole>().AddRoleManager<RoleManager<IdentityRole>>().AddEntityFrameworkStores<LovdContext>();
+    ).AddRoles<IdentityRole>().AddRoleManager<RoleManager<IdentityRole>>().AddEntityFrameworkStores<LoveContext>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 builder.Services.AddControllersWithViews();

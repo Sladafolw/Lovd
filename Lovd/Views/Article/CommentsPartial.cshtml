@@ -128,23 +128,23 @@
                                     {
                                         <a class="media-left" href="#"><img class="img-circle img-sm" alt="Профиль пользователя" src="https://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a>
                                         <div class="media-body">
-
+                                            <div post-id="@comment.IdArticle" comment-id="@comment.IdComments" class="pad-ver"></div>
                                             <div class="panel-body">
                                                 <div class="mar-btm">
                                                     <a href="#" class="btn-link text-semibold media-heading box-inline">@Html.Raw(comment.User.UserName)</a>
                                                     <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - @Html.Raw(comment.CreatedDate);</p>
-                                                </div>
+                                                </div><a data="@comment.IdArticle" comment-id="@comment.IdComments" class="pad-ver"></a>
                                                 <div>@Html.Raw(comment.Text);</div>
-                                                <div post-id='@comment.IdArticle' comment-id='@comment.IdComments' class="pad-ver">
-                                                    @if (User.IsInRole("Admin"))
-                                                    {<a class="delete">delete</a>}
-                                                    @*<a class="test" style="text-decoration:none">Ответить</a>*@
-                                                </div>
+                                                <a data="@comment.IdArticle" comment-id="@comment.IdComments" class="pad-ver"></a>
+                                                @*@if (User.IsInRole("Admin"))
+                            {<a class="delete">delete</a>}*@<div data="@comment.IdArticle" comment-id="@comment.IdComments" class="pad-ver"></div>
+                                                <a class="test" style="text-decoration:none">Ответить</a>
 
+                                                <a data="@comment.IdArticle" comment-id="@comment.IdComments" class="pad-ver"></a>
                                             </div>
-
+                                            <a data="@comment.IdArticle" comment-id="@comment.IdComments" class="pad-ver"></a>
                                         </div>
-
+                                        <a data="@comment.IdArticle" comment-id="@comment.IdComments" class="pad-ver"></a>
                                     }
                                 }
                             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace Lovd.Models
@@ -13,6 +14,6 @@ namespace Lovd.Models
         public string Announce { get; set; } = null!;
         public string IdUser { get; set; } = null!;
 
-        public virtual AspNetUser IdUserNavigation { get; set; } = null!;
+        public virtual IdentityUser IdUserNavigation { get; set; } = null!;
     }
 }

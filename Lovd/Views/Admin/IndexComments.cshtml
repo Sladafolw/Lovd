@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.IdArticleNavigation.IdArticle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.User.UserName)
             </td>
             <td>
                 <a asp-action="EditComments" asp-route-id="@item.IdComments">Edit</a> |

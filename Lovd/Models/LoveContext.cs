@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using AngleSharp.Common;
 
 namespace Lovd.Models
 {
-    public partial class LoveContext : DbContext
+    public partial class LoveContext : IdentityDbContext<IdentityUser>
     {
         public LoveContext()
         {
@@ -15,14 +18,8 @@ namespace Lovd.Models
             : base(options)
         {
         }
-
         public virtual DbSet<Article> Articles { get; set; } = null!;
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; } = null!;
-        public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; } = null!;
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; } = null!;
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; } = null!;
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; } = null!;
-        public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
+      
         public virtual DbSet<Bait> Baits { get; set; } = null!;
         public virtual DbSet<Comment> Comments { get; set; } = null!;
         public virtual DbSet<KindOfFish> KindOfFishes { get; set; } = null!;
@@ -32,7 +29,6 @@ namespace Lovd.Models
         public virtual DbSet<News> News { get; set; } = null!;
         public virtual DbSet<Pond> Ponds { get; set; } = null!;
         public virtual DbSet<TopicForum> TopicForums { get; set; } = null!;
-        public virtual DbSet<UsersInfo> UsersInfos { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -58,101 +54,9 @@ namespace Lovd.Models
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Articles)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_News_AspNetUsers");
+               ;
             });
 
-            modelBuilder.Entity<AspNetRole>(entity =>
-            {
-                entity.HasIndex(e => e.NormalizedName, "RoleNameIndex")
-                    .IsUnique()
-                    .HasFilter("([NormalizedName] IS NOT NULL)");
-
-                entity.Property(e => e.Name).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedName).HasMaxLength(256);
-            });
-
-            modelBuilder.Entity<AspNetRoleClaim>(entity =>
-            {
-                entity.HasIndex(e => e.RoleId, "IX_AspNetRoleClaims_RoleId");
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.AspNetRoleClaims)
-                    .HasForeignKey(d => d.RoleId);
-            });
-
-            modelBuilder.Entity<AspNetUser>(entity =>
-            {
-                entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
-
-                entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
-                    .IsUnique()
-                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
-
-                entity.Property(e => e.Email).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
-
-                entity.Property(e => e.UserName).HasMaxLength(256);
-
-                entity.HasMany(d => d.Roles)
-                    .WithMany(p => p.Users)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "AspNetUserRole",
-                        l => l.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"),
-                        r => r.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"),
-                        j =>
-                        {
-                            j.HasKey("UserId", "RoleId");
-
-                            j.ToTable("AspNetUserRoles");
-
-                            j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
-                        });
-            });
-
-            modelBuilder.Entity<AspNetUserClaim>(entity =>
-            {
-                entity.HasIndex(e => e.UserId, "IX_AspNetUserClaims_UserId");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.AspNetUserClaims)
-                    .HasForeignKey(d => d.UserId);
-            });
-
-            modelBuilder.Entity<AspNetUserLogin>(entity =>
-            {
-                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
-
-                entity.HasIndex(e => e.UserId, "IX_AspNetUserLogins_UserId");
-
-                entity.Property(e => e.LoginProvider).HasMaxLength(128);
-
-                entity.Property(e => e.ProviderKey).HasMaxLength(128);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.AspNetUserLogins)
-                    .HasForeignKey(d => d.UserId);
-            });
-
-            modelBuilder.Entity<AspNetUserToken>(entity =>
-            {
-                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
-
-                entity.Property(e => e.LoginProvider).HasMaxLength(128);
-
-                entity.Property(e => e.Name).HasMaxLength(128);
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.AspNetUserTokens)
-                    .HasForeignKey(d => d.UserId);
-            });
 
             modelBuilder.Entity<Bait>(entity =>
             {
@@ -181,11 +85,7 @@ namespace Lovd.Models
                     .HasForeignKey(d => d.IdArticle)
                     .HasConstraintName("R_19");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Comments)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Comments_AspNetUsers");
+               
             });
 
             modelBuilder.Entity<KindOfFish>(entity =>
@@ -249,11 +149,6 @@ namespace Lovd.Models
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.News)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_News_AspNetUsers1");
             });
 
             modelBuilder.Entity<Pond>(entity =>
@@ -266,11 +161,7 @@ namespace Lovd.Models
 
                 entity.Property(e => e.Title).HasMaxLength(50);
 
-                entity.HasOne(d => d.IdUserNavigation)
-                    .WithMany(p => p.Ponds)
-                    .HasForeignKey(d => d.IdUser)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Ponds_AspNetUsers");
+        
             });
 
             modelBuilder.Entity<TopicForum>(entity =>
@@ -284,34 +175,14 @@ namespace Lovd.Models
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.TopicForums)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TopicForum_AspNetUsers");
+          
             });
 
-            modelBuilder.Entity<UsersInfo>(entity =>
-            {
-                entity.HasKey(e => e.UserId)
-                    .HasName("PK__UsersInf__1788CC4CBFC09311");
+             
 
-                entity.ToTable("UsersInfo");
-
-                entity.Property(e => e.LastOnline).HasColumnType("datetime");
-
-                entity.Property(e => e.RegistrationDate).HasColumnType("datetime");
-
-                entity.HasOne(d => d.User)
-                    .WithOne(p => p.UsersInfo)
-                    .HasForeignKey<UsersInfo>(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_UsersInfo_UsersInfo");
-            });
-
-            OnModelCreatingPartial(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+  
     }
 }

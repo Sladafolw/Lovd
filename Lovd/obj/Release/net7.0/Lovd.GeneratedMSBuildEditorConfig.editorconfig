@@ -180,6 +180,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/AllUserWithRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWxsVXNlcldpdGhSb2xlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/CreateArticles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQXJ0aWNsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -208,6 +212,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlQmFpdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DeleteComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlQ29tbWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DeleteFish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlRmlzaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -222,6 +230,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DetailsBaits.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc0JhaXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DetailsComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc0NvbW1lbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/DetailsFish.cshtml]
@@ -240,6 +252,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJhaXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/EditComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdENvbW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/EditFish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEZpc2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -256,12 +272,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhCYWl0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/IndexComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhDb21tZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/IndexFish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhGaXNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/IndexLures.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhMdXJlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/SetUserRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2V0VXNlclJvbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Admin/Test.cshtml]
@@ -288,8 +312,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxNYWluUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/slava/source/repos/Lovd/Lovd/Views/Baits/BaitsMain.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdHNcQmFpdHNNYWluLmNzaHRtbA==
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Baits/DifferentsBaits.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdHNcRGlmZmVyZW50c0JhaXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Baits/MainPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdHNcTWFpblBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Forum/MainPage.cshtml]
@@ -304,12 +332,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/slava/source/repos/Lovd/Lovd/Views/KindOfFish/KindOfFishMain.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2luZE9mRmlzaFxLaW5kT2ZGaXNoTWFpbi5jc2h0bWw=
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Home/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/slava/source/repos/Lovd/Lovd/Views/Lures/LuresMain.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVyZXNcTHVyZXNNYWluLmNzaHRtbA==
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/KindOfFish/DifferentsFish.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2luZE9mRmlzaFxEaWZmZXJlbnRzRmlzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/KindOfFish/MainPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2luZE9mRmlzaFxNYWluUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Lures/DifferentsLures.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVyZXNcRGlmZmVyZW50c0x1cmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/slava/source/repos/Lovd/Lovd/Views/Lures/MainPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVyZXNcTWFpblBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/slava/source/repos/Lovd/Lovd/Views/Shared/_LoginPartial.cshtml]

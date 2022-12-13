@@ -35,7 +35,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.User)
             </th>
-
+     
 
         </tr>
     </thead>
@@ -66,9 +66,9 @@
                 @Html.DisplayFor(modelItem => item.Announce)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.User.UserName)
             </td>
-            <td>
+            <td style="display:inline-table">
                 <a asp-action="EditArticles" asp-route-id="@item.IdArticle">Edit</a> |
                 <a asp-action="DetailsArticles" asp-route-id="@item.IdArticle">Details</a> |
                 <a asp-action="DeleteArticles" asp-route-id="@item.IdArticle">Delete</a>

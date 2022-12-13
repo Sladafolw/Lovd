@@ -5,8 +5,8 @@
                                         </div>");
 });
 $("body").on("click", "#btnReply", function () {
-    var postId = $(this).closest("div").attr("post-id");
-    var parentCommentId = $(this).closest("div").attr("comment-id");
+    var postId = $(this).closest("pad-ver").attr("data");
+    var parentCommentId = $(this).closest("pad-ver").attr("comment-id");
     var comment = $(this).prev("input[type=text]").val();
     alert(postId);    //Insert to Comments list using REST Api call
     var listItem = {

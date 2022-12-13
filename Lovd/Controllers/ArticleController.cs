@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Lovd.Models;
-using Lovd.Data;
+
 
 using Lovd.ModelsView;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Ajax.Utilities;
 
 namespace Lovd.Controllers
 {
@@ -25,8 +26,7 @@ namespace Lovd.Controllers
             _context = context;
             _userManager = userManager;
         }
-
-
+      
         // GET: News
         public async Task<IActionResult> MainPage(int page)
         {
