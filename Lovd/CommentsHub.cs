@@ -1,4 +1,5 @@
 ﻿using Lovd.Models;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -40,17 +41,8 @@ namespace _3psp
         //        await Clients.Group(groupname).SendAsync("Notify", $"{a} вошел в чат");
         //    }
         //}
-        List<IdentityUser> ConnectedUsers=new ();
-        public override Task OnConnectedAsync()
-        {
-            
-            return base.OnConnectedAsync();
-        }
-        public class MyUserType
-        {
-            public string ConnectionId { get; set; }
-            // Can have whatever you want here
-        }
+        
+     
         public bool GroupNameExsist(string group)
         {
             if (group != null && groupNameList != null)
